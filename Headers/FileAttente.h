@@ -7,6 +7,7 @@ class FileAttente
 {
     public:
         FileAttente();
+
         double tempsEntreArrivees();
         int longueurMax();
         double longueurMoyenne();
@@ -18,8 +19,12 @@ class FileAttente
     protected:
        
     private:
-
+        int longueurMax;
+        double longueurMoyenne;
+        double tempsMoyenAttente;
+        Client tab[longueurMax];
 };
+
 
 
 #endif // FILEATTENTE_H

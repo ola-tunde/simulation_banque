@@ -15,10 +15,11 @@ class FileAttente
         void ajouter(Client c);
         Client retirer();
         bool estVide();
-        
+
     protected:
-       
+
     private:
+        int nbClients;
         int longueurMax;
         double longueurMoyenne;
         double tempsMoyenAttente;

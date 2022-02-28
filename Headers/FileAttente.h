@@ -16,7 +16,7 @@ class FileAttente
         Client retirer();
         bool estVide();
 
-    protected:
+    protected: 
 
     private:
         int nbClients;

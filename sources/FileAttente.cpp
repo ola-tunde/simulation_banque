@@ -39,9 +39,7 @@ void FileAttente::ajouter(Client c) {
 
 }
 
-Client FileAttente::retirer(){
-    
-}
+//Client FileAttente::retirer(){}
 
 bool FileAttente::estVide(){
     if (tab == NULL)

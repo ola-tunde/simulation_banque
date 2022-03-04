@@ -1,12 +1,12 @@
-#include "../Headers/Client.h"
+#include "../headers/Client.h"
 
 #include <iostream>
 using namespace std;
 
 Client::Client(double heure){
-    this.heureArrivee = heure;
+    _heureArrivee = heure;
 }
 
 double Client::heureArrivee(){
-    return heureArrivee;
+    return _heureArrivee;
 }

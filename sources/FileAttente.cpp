@@ -1,40 +1,40 @@
-#include "FileAttente.h"
-#include "Client.h"
+#include "../headers/FileAttente.h"
+#include "../headers/Client.h"
 
 
 #include <iostream>
 using namespace std;
 
 FileAttente::FileAttente(){
-    longueurMax = 1;
-    nbClients = 0;
+    _longueurMax = 1;
+    _nbClients = 0;
 }
 
-FileAttente::FileAttente(int longueurMax){
-    this.longueurMax = longueurMax;
-    nbClients = 0;
+FileAttente::FileAttente(int _longueurMax){
+    this->_longueurMax = _longueurMax;
+    _nbClients = 0;
 
 }
 
 int FileAttente::longueurMax(){
-    return longueurMax;
+    return _longueurMax;
 }
 
 double FileAttente::longueurMoyenne(){
-    return longueurMoyenne;
+    return _longueurMoyenne;
 }
 
 double FileAttente::tempsMoyenAttente(){
-    return tempsMoyenAttente;
+    return _tempsMoyenAttente;
 }
 
 //double FileAttente::tempsEntreArrivees(){}
 
 
 void FileAttente::ajouter(Client c) {
-    if (nbClients < longueurMax) {
-        tab[nbClients] = c;
-        nbClients++;
+    if (_nbClients < _longueurMax) {
+        tab[_nbClients] = c;
+        _nbClients++;
     }
 
 }
@@ -42,7 +42,7 @@ void FileAttente::ajouter(Client c) {
 //Client FileAttente::retirer(){}
 
 bool FileAttente::estVide(){
-    if (tab == NULL)
+    if (tab[_longueurMax] == NULL)
         return true;
     else return false;
 }

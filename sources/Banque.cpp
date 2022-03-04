@@ -1,5 +1,5 @@
-#include "Caissier.h"
-#include "SED.h"
+#include "../headers/Caissier.h"
+#include "../headers/SED.h"
 
 
 #include <iostream>

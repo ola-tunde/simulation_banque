@@ -4,14 +4,14 @@
 class Client
 {
     public:
-        Client();
+        Client(double heure);
         
         double heureArrivee();
         
     protected:
        
     private:
-        double heureArrivee;
+        double _heureArrivee;
 };
 
 

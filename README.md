@@ -1,2 +1,2 @@
-# simulation_banque
-follow this video firstly : https://www.youtube.com/watch?v=jvg4VtYEhKU
+# Simulation en banque
+Follow this video firstly if you worl on VS Code: https://www.youtube.com/watch?v=jvg4VtYEhKU

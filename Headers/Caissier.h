@@ -16,9 +16,9 @@ class Caissier
     protected:
        
     private:
-        double tempsMoyenService;
-        int nbClients;
-        double tauxOccupation;
+        double _tempsMoyenService;
+        int _nbClients;
+        double _tauxOccupation;
 };
 
 

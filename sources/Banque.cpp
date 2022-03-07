@@ -1,39 +1,43 @@
 #include "../headers/Caissier.h"
-#include "../headers/SED.h"
+//#include "../headers/SED.h"
 
 
 #include <iostream>
 using namespace std;
 
-Banque::Banque(){}
+Banque::Banque(){
+    _dureePrevue = 0;
+    
+    
+}
 
 double Banque::dureePrevue(){
-    return dureePrevue;
+    return _dureePrevue;
 }
 
 double Banque::dureeReelle(){
-    return dureeReelle;
+    return _dureeReelle;
 }
 
 int Banque::nbCaissiers(){
-    return nbCaissiers;
+    return _nbCaissiers;
 }
 
 int Banque::nbClients(){
-    return nbClients;
+    return _nbClients;
 }
 
 Caissier Banque::premierCaissierLibre(){
-    if (tab != NULL)
+  /*  if (tab != NULL)
     {
         i = 0;
-        while (tab[nbCaissiers != NULL]){
+        while (tab[_nbCaissiers != NULL]){
             i++;
         }
-        cout << "Caissier numéro" << tab[nbCaissiers] <<"est libre"<< endl;
+        cout << "Caissier numéro" << tab[_nbCaissiers] <<" est libre"<< endl;
 
     }
     else cout << "Aucune file d'attente. Veuillez passer à la caisse de votre choix" << endl;
-
+*/
 }
 

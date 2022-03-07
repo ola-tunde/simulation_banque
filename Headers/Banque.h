@@ -2,9 +2,9 @@
 #define BANQUE_H
 
 #include "Caissier.h"
-#include "SED.h"
+//#include "SED.h"
 
-class Banque : public SED
+class Banque /*: public SED*/
 {
     public:
         Banque();
@@ -18,11 +18,11 @@ class Banque : public SED
     protected:
        
     private:
-        double dureePrevue;
-        int nbCaissiers;
-        double dureeReelle;
-        int nbClients; 
-        Caissier tab[nbCaissiers]; // taille de tab >= 1 et tab[i] != null []
+        double _dureePrevue;
+        int _nbCaissiers;
+        double _dureeReelle;
+        int _nbClients; 
+        Caissier tab[_nbCaissiers]; // taille de tab >= 1 et tab[i] != null []
 };
 
 

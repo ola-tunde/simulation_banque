@@ -6,15 +6,11 @@
 using namespace std;
 
 FileAttente::FileAttente(){
-    _longueurMax = 1;
+    _longueurMax = 0;
     _nbClients = 0;
+    _tempsMoyenAttente = 0;
 }
 
-FileAttente::FileAttente(int _longueurMax){
-    this->_longueurMax = _longueurMax;
-    _nbClients = 0;
-
-}
 
 int FileAttente::longueurMax(){
     return _longueurMax;
@@ -32,18 +28,28 @@ double FileAttente::tempsMoyenAttente(){
 
 
 void FileAttente::ajouter(Client c) {
-    if (_nbClients < _longueurMax) {
-        tab[_nbClients] = c;
-        _nbClients++;
-    }
-
+    this->clients.push(c);
+    this->_nbClients++;
 }
 
-//Client FileAttente::retirer(){}
+
+Client FileAttente::retirer() {
+    Client c = this->clients.front();
+    this->clients.pop();
+    this->_nbClients--;
+    //TODO trouver un moyen de donner les heures de départs et d'arrivées
+    //this->_tempsMoyenAttente = (this->_tempsMoyenAttente + (_heureDepart -_heureArrivee)) / 2
+
+    return c;
+}
+
 
 bool FileAttente::estVide(){
-    if (tab[_longueurMax] == NULL)
+    if (clients.size() == 0)
         return true;
-    else return false;
+    else 
+        return false;
 }
 
+
+ 

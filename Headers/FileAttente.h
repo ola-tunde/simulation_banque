@@ -1,13 +1,19 @@
+
 #ifndef FILEATTENTE_H
 #define FILEATTENTE_H
 
+#include <queue> 
+#include <iostream>
+
+using namespace std;
+
 #include "Client.h"
+
 
 class FileAttente
 {
     public:
         FileAttente();
-        FileAttente(int _longueurMax);
 
         double tempsEntreArrivees();
         int longueurMax();
@@ -20,14 +26,12 @@ class FileAttente
     protected: 
 
     private:
-        int _nbClients;
+        int _nbClients; 
         int _longueurMax;
         double _longueurMoyenne;
         double _tempsMoyenAttente;
-        Client tab[_longueurMax];
-        Client tab[_nbClients];
+        queue<Client> clients; 
 };
-
 
 
 #endif // FILEATTENTE_H

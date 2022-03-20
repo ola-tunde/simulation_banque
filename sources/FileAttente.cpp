@@ -1,55 +1,63 @@
 #include "../headers/FileAttente.h"
-#include "../headers/Client.h"
 
 
 #include <iostream>
 using namespace std;
 
-FileAttente::FileAttente(){
-    _longueurMax = 0;
-    _nbClients = 0;
-    _tempsMoyenAttente = 0;
+FileAttente::FileAttente(double _tempsEntreArrivees) {
+    this->_longueurMax = 0;
+    this->_tempsMoyenAttente = 0;
+    this->_tempsEntreArrivees = _tempsEntreArrivees;
 }
 
 
-int FileAttente::longueurMax(){
-    return _longueurMax;
+int FileAttente::longueurMax() {
+    if (_clients.size() > _longueurMax){
+        _longueurMax = _clients.size();
+    }
+    return this->_longueurMax;
 }
 
-double FileAttente::longueurMoyenne(){
-    return _longueurMoyenne;
+//TODO demander de la longueurMoyenne (FileAttente)
+double FileAttente::longueurMoyenne() {
+    return this->_longueurMoyenne;
 }
 
-double FileAttente::tempsMoyenAttente(){
-    return _tempsMoyenAttente;
+double FileAttente::tempsMoyenAttente() {
+    return this->_tempsMoyenAttente;
 }
 
-//double FileAttente::tempsEntreArrivees(){}
+//TODO générer le tempsEntreArrivees (Client)
+double FileAttente::tempsEntreArrivees() {
+    return this->_tempsEntreArrivees;
+}
 
 
 void FileAttente::ajouter(Client c) {
-    this->clients.push(c);
-    this->_nbClients++;
+    this->_clients.push(c);
 }
 
 
 Client FileAttente::retirer() {
-    Client c = this->clients.front();
-    this->clients.pop();
-    this->_nbClients--;
-    //TODO trouver un moyen de donner les heures de départs et d'arrivées
-    //this->_tempsMoyenAttente = (this->_tempsMoyenAttente + (_heureDepart -_heureArrivee)) / 2
+    Client c = this->_clients.front();
+    this->_clients.pop();
+    //c._heureArrivee = 
+    //TODO heure départ (Client)
+
+    if (this->_tempsMoyenAttente == 0.0) {
+        this->_tempsMoyenAttente = c._heureDepart;
+    } else {
+        this->_tempsMoyenAttente = ((this->_tempsMoyenAttente + (c._heureDepart - c._heureArrivee)) / 2)
+    }
 
     return c;
 }
 
 
 bool FileAttente::estVide(){
-    if (clients.size() == 0)
+    if (_clients.size() == 0)
         return true;
     else 
         return false;
-}
+} 
 
-
- 

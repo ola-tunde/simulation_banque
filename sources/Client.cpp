@@ -4,9 +4,14 @@
 using namespace std;
 
 Client::Client(double heure){
-    _heureArrivee = heure;
+    this->_heureArrivee = heure;
 }
-//TODO heure arrivée
+
+//TODO heure arrivée (Client)
 double Client::heureArrivee(){
     return _heureArrivee;
+}
+
+double Client::heureDepart(){
+    return _heureDepart;
 }

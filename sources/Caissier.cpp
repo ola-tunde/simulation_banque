@@ -1,36 +1,41 @@
 #include "../headers/Caissier.h"
-#include "../headers/Client.h"
 
 
 #include <iostream>
 using namespace std;
 
-Caissier::Caissier(){
-    _nbclients = 0;
-    _tempsMoyenService = 0;
+Caissier::Caissier(double _tempsMoyenService){
+    this->_nbClients = 0;
+    this->_tempsMoyenService = 0.0;
+    this->_estLibre = true;
+    this->_tempsMoyenService = _tempsMoyenService;
     
 }
 
 double Caissier::tempsMoyenService(){
-    return _tempsMoyenService;
+    return this->_tempsMoyenService;
 }
 
 int Caissier::nbClients(){
-    return _nbClients;
+    return this->_nbClients;
 }
 
 double Caissier::tauxOccupation(){
-    return _tauxOccupation;
+    return this->_tauxOccupation;
 }
+
+bool Caissier::estLibre(){
+    return this->_estLibre;
+} 
 
 void Caissier::servir (Client c){
     cout << "Client servi" << endl;
-    delete c;
-    _nbclients++;
+    delete &c;
+    this->_nbClients++;
 } 
-
-// bool Caissier::estLibre(){} //Libre s'il a fini de servir un client
-
-// void Caissier::attendre(){} 
-
-//[o, x, o, x, x, x, x, x, x, x, x]
+ 
+void Caissier::attendre(){
+    while (this->_estLibre = true){ 
+        continue;
+    }
+}

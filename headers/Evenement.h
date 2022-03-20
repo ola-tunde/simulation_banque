@@ -1,17 +1,14 @@
 #ifndef EVENEMENT_H
 #define EVENEMENT_H
 
-
+//#include "SED.h"
 
 class Evenement
 {
-    public:
-        
-        
+    public:    
     protected:
-       void heure();
-       void traiter();
-       
+       virtual void heure();
+       virtual void traiter();
     private:
         
 };

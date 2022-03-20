@@ -1,6 +1,10 @@
 #ifndef SED_H
 #define SED_H
 
+#include <queue>
+
+#include "Evenement.h"
+
 class SED
 {
     public:
@@ -11,8 +15,8 @@ class SED
         double heure();
         
     protected:
-        Evenement tab[];
-        double heure;
+        queue<Evenement> _evenements;
+        double _heure;
        
     private:
         

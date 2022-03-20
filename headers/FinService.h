@@ -6,10 +6,9 @@
 class FinService : public Evenement
 {
     public:
-
     protected:
-     
     private:
+        void traiter();
 
 };
 

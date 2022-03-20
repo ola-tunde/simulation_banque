@@ -1,8 +1,8 @@
-
 #ifndef FILEATTENTE_H
 #define FILEATTENTE_H
 
 #include <queue> 
+#include <ctime>
 #include <iostream>
 
 using namespace std;
@@ -26,11 +26,11 @@ class FileAttente
     protected: 
 
     private:
-        int _nbClients; 
         int _longueurMax;
         double _longueurMoyenne;
         double _tempsMoyenAttente;
-        queue<Client> clients; 
+        double _tempsEntreArrivees;
+        queue<Client> _clients; 
 };
 
 

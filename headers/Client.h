@@ -7,11 +7,13 @@ class Client
         Client(double heure);
         
         double heureArrivee();
+        double heureDepart();
         
     protected:
        
     private:
         double _heureArrivee;
+        double _heureDepart;
 };
 
 

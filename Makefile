@@ -1,33 +1,37 @@
-prog : main.o Arrivee.o Banque.o Caissier.o Client.o Evenement.o FileAttente.o FinService.o SED.o
-	g++ -o prog main.o Arrivee.o Banque.o Caissier.o Client.o Evenement.o FileAttente.o FinService.o SED.o
+#TODO corriger au besoin le makefile
 
+# Classe de fichiers
+FILES = $(HD)SED.h $(HD)Evenement.h $(HD)Banque.h $(HD)Caissier.h $(HD)FileAttente.h $(HD)Client.h $(HD)FinService.h $(HD)Arrivee.h
 
-main.o : main.cpp
-	g++ -c -Wall main.cpp -o main.o
+#Objets
+OBJ = SED.o Evenement.o Banque.o Caissier.o FileAttente.o Client.o FinService.o Arrivee.o
 
-Arrivee.o : Arrivee.cpp
-	g++ -c -Wall Arrivee.cpp -o Arrivee.o
+# Path fichiers headers
+HD = headers/
 
-Banque.o : Banque.cpp
-	g++ -c -Wall Banque.cpp -o Banque.o
+#path fichiers sources 
+SRC = sources/
 
-Caissier.o : Caissier.cpp
-	g++ -c -Wall Caissier.cpp -o Caissier.o
+#path fichiers objets 
+PHOBJ = obj/
 
-Client.o : Client.cpp
-	g++ -c -Wall Client.cpp -o Client.o
+# Commande compilateur 
+CC = g++ -c -Wall
 
-Evenement.o : Evenement.cpp
-	g++ -c -Wall Evenement.cpp -o Evenement.o
+# Compiler le main
+main.o : $(OBJ) 
+	$(CC) prog $(OBJ)
 
-FileAttente.o : FileAttente.cpp
-	g++ -c -Wall FileAttente.cpp  -o FileAttente.o
-
-FinService.o : FinService.cpp
-	g++ -c -Wall FinService.cpp -o FinService.o
-
-SED.o : SED.cpp
-	g++ -c -Wall SED.cpp -o SED.o
+# Compiler chaque classe et les dépendances
+SED.o : $(HD)SED.h $(HD)Evenement.h 
+Banque.o : $(HD)Banque.h $(HD)Caissier.h $(HD)SED.h
+Caissier.o : $(HD)Caissier.h 
+FileAttente.o : $(HD)FileAttente.h $(HD)Client.h 
+Client.o : $(HD)Client.h
+Evenement.o : $(HD)Evenement.h $(HD)SED.h
+FinService.o : $(HD)FinService.h $(HD)Evenement.h
+Arrivee.o : $(HD)Arrivee.h $(HD)Evenement.h
+main.o : $(FILES)
 
 clean: 
-	rm *.o prog
+	rm *.o

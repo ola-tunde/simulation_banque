@@ -4,7 +4,7 @@
 #include <queue>
 
 #include "Evenement.h"
-
+using namespace std;
 class SED
 {
     public:
@@ -13,6 +13,7 @@ class SED
         void ajouter (Evenement e);
         void lancer();
         double heure();
+        queue<Evenement> evenements();
         
     protected:
         queue<Evenement> _evenements;

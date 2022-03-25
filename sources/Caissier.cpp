@@ -35,7 +35,5 @@ void Caissier::servir (Client c){
 } 
  
 void Caissier::attendre(){
-    while (this->_estLibre = true){ 
-        continue;
-    }
+    cout << "Client attendu" << endl;
 }

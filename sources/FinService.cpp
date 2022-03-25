@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-FinService::FinService(): Evenement{}
+FinService::FinService(): Evenement(){}
 
 
 void FinService::traiter(){

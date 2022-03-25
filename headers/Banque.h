@@ -17,7 +17,7 @@ class Banque : public SED
         double dureeReelle();
         int nbClients();
         Caissier* caissiers(); 
-        Caissier* premierCaissierLibre();
+        Caissier premierCaissierLibre();
         
     protected:
        

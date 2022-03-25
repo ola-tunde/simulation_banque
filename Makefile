@@ -23,9 +23,7 @@ $(NAME): $(OBJ)
 	@rm -f $(OBJ)
 
 clean:
-	@rm -rf *.o
-	@rm -rf sources/*.o
-	@rm -rf sources/*.exe
+	@rm -f $(OBJ)
 
 fclean:    clean
 	@rm -rf $(NAME)

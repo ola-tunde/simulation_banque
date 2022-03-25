@@ -10,9 +10,9 @@ Client::Client(double heure){
 //TODO heure arrivée (Client)
 
 double Client::heureArrivee(){
-    return _heureArrivee;
+    return this->_heureArrivee;
 }
 
 double Client::heureDepart(){
-    return _heureDepart;
+    return this->_heureDepart;
 }

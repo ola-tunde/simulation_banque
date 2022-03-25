@@ -54,7 +54,7 @@ Client FileAttente::retirer() {
 
 
 bool FileAttente::estVide(){
-    if (_clients.size() == 0)
+    return _clients.size() == 0
         return true;
     else 
         return false;

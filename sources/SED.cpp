@@ -15,4 +15,8 @@ void SED::ajouter(Evenement e){
     this->_evenements.push(e);
 }
 
+queue<Evenement> SED::evenements(){
+    return this->_evenements;
+}
+
 void SED::lancer(){}

@@ -2,7 +2,6 @@
 #define CLIENT_H
 //afficher l'encodage utf8 dans la console
 
-
 using namespace std;
 
 class Client

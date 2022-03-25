@@ -5,7 +5,8 @@
 
 class Evenement
 {
-    public:    
+    public:  
+        Evenement();  
     protected:
        virtual void heure();
        virtual void traiter();

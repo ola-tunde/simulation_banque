@@ -3,18 +3,20 @@
 
 #include "Caissier.h"
 //#include "FileAttente.h"
-//#include "SED.h"
+#include "SED.h"
 
-class Banque /*: public SED*/
+using namespace std;
+
+class Banque : public SED
 {
     public:
-        Banque();
-        Banque(int _nbCaissiers, double _dureePrevue);
+        Banque(int _nbCaissiers, double _dureePrevue, double tempsService );
 
         double dureePrevue();
         int nbCaissiers();
         double dureeReelle();
         int nbClients();
+        Caissier* caissiers(); 
         Caissier* premierCaissierLibre();
         
     protected:
@@ -24,7 +26,7 @@ class Banque /*: public SED*/
         int _nbCaissiers;
         double _dureeReelle;
         int _nbClients; 
-        Caissier* caissiers; 
+        Caissier* _caissiers; 
         
 };
 

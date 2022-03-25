@@ -6,6 +6,7 @@
 class Arrivee : public Evenement
 {
     public:
+        Arrivee();
     protected:
     private:
         void traiter();

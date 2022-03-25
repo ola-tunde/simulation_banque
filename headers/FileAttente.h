@@ -2,7 +2,7 @@
 #define FILEATTENTE_H
 
 #include <queue> 
-#include <ctime>
+//#include <ctime>
 #include <iostream>
 
 using namespace std;
@@ -13,7 +13,7 @@ using namespace std;
 class FileAttente
 {
     public:
-        FileAttente();
+        FileAttente(double _tempsEntreArrivees);
 
         double tempsEntreArrivees();
         int longueurMax();
@@ -26,7 +26,7 @@ class FileAttente
     protected: 
 
     private:
-        int _longueurMax;
+        unsigned int _longueurMax;
         double _longueurMoyenne;
         double _tempsMoyenAttente;
         double _tempsEntreArrivees;

@@ -8,6 +8,7 @@ Client::Client(double heure){
 }
 
 //TODO heure arrivée (Client)
+
 double Client::heureArrivee(){
     return _heureArrivee;
 }

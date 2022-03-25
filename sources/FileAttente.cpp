@@ -41,13 +41,12 @@ void FileAttente::ajouter(Client c) {
 Client FileAttente::retirer() {
     Client c = this->_clients.front();
     this->_clients.pop();
-    //c._heureArrivee = 
     //TODO heure départ (Client)
 
     if (this->_tempsMoyenAttente == 0.0) {
-        this->_tempsMoyenAttente = c._heureDepart;
+        this->_tempsMoyenAttente = c.heureDepart();
     } else {
-        this->_tempsMoyenAttente = ((this->_tempsMoyenAttente + (c._heureDepart - c._heureArrivee)) / 2)
+        this->_tempsMoyenAttente = (this->_tempsMoyenAttente + (c.heureDepart() - c.heureDepart())) / 2;
     }
 
     return c;

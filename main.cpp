@@ -1,3 +1,5 @@
+// TODO commentaire doxygen
+// TODO afficher les caractères spéciaux sous utf8
 #include <iostream>
 #include "headers/Banque.h"
 #include "headers/Client.h"
@@ -8,11 +10,12 @@
 
 using namespace std;
 
-int main(int argc, char **argv){
-    int duree, nombreCaissiers, tempsService, tempsArrivee;
+int main(){
+    int duree, nombreCaissiers;
+    double tempsService, tempsArrivee;
     SED simulation;
     simulation.lancer();
-    cout << "Bienvenue à la simulation de banque" << endl;
+    cout << "Bienvenue à la simulation de banque\n" << endl;
     cout << "Il est " << simulation.heure() << endl;
     cout << "Durée prévue de la simulation : ";
     cin >> duree;
@@ -20,24 +23,24 @@ int main(int argc, char **argv){
     cout << "Nombre de caissiers : " ;
     cin >> nombreCaissiers;
     cout <<" " << endl;
-    Banque banque(nombreCaissiers, duree);
-
     cout << "Temps de service de chaque caissier : " ;
     cin >> tempsService;
     cout <<" " << endl;
-    Caissier caissier;
-    caissier(tempsService);
-
+    Banque banque = *(new Banque(nombreCaissiers, duree, tempsService));
+    
     cout << "Temps entre deux arrivées : ";
     cin >> tempsArrivee;
-    FileAttente fileAttente;
-    fileAttente(tempsArrivee);
+    FileAttente fileAttente = *(new FileAttente(tempsArrivee));
 
     cout << "Fin de la simulation :"  ;
 
-
-
-
+    cout << " Durée réelle de la simulation : " << banque.dureeReelle() << endl ;
+    cout << " Longueur max de la file d'attente : " << fileAttente.longueurMax() << endl ;
+    cout << " Longueur moyenne de la file d'attente : " << fileAttente.longueurMoyenne() << endl ;
+    cout << " Temps d'attente client de la file d'attente : " << fileAttente.tempsMoyenAttente() << endl ;
+    for (int i = 0; i <nombreCaissiers; i++) {
+        cout << " Taux d'occupation du caissier " << i + 1 << " : " << banque.caissiers()[i].tauxOccupation() << endl ;
+    }
 
     return 0;
 }

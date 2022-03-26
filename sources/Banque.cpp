@@ -6,7 +6,7 @@ using namespace std;
 Banque::Banque(int _nbCaissiers, double _dureePrevue, double tempsService) : SED(){
     this->_dureePrevue = _dureePrevue ;
     this->_nbCaissiers = _nbCaissiers ;
-    //this->_nbClients = 1;
+    this->_nbClients = 1;
        
     for (int i = 0; i < _nbCaissiers; i++) {
         this->_caissiers[i] = Caissier(tempsService);

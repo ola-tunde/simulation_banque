@@ -4,7 +4,7 @@
 using namespace std;
 
 SED::SED(){
-    this->_heure = 0.0;
+    this->_heure = 0.0 ;
 }
 
 double SED::heure(){

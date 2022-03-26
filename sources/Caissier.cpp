@@ -36,4 +36,5 @@ void Caissier::servir (Client c){
  
 void Caissier::attendre(){
     cout << "Client attendu" << endl;
+    
 }

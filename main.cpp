@@ -26,7 +26,7 @@ int main(){
     cout << "Temps de service de chaque caissier : " ;
     cin >> tempsService;
     cout <<" " << endl;
-    Banque banque = *(new Banque(nombreCaissiers, duree, tempsService));
+    Banque banque = Banque(nombreCaissiers, duree, tempsService);
     
     cout << "Temps entre deux arrivées : ";
     cin >> tempsArrivee;

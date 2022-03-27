@@ -1,5 +1,4 @@
-# Fichiers sources
-SRC	= sources/Banque.cpp \
+SRC = sources/Banque.cpp \
 sources/Arrivee.cpp  \
 sources/Caissier.cpp  \
 sources/Client.cpp  \
@@ -9,24 +8,23 @@ sources/FinService.cpp  \
 sources/SED.cpp    \
 main.cpp
 
-# Fichiers objets
-OBJ = $(SRC:.cpp = .o)
+OBJ = $(SRC:.cpp=.o)
 
-# Nom du programme
 NAME = simulationBanque
 
-all: $(NAME)
-	@rm -f $(OBJ)
+all : $(NAME)
 
-$(NAME): $(OBJ)
-	@g++ -o $(NAME) $(SRC) -W -Wall -Wextra -Werror -g3
-	@rm -f $(OBJ)
+$(NAME) : $(OBJ)                                                       
+	g++ -o $(NAME) $(SRC) -W -Wall -Wextra -Werror -g3
+	rm -f $(OBJ)
 
-clean:
-	@rm -f $(OBJ)
+clean :
+	rm -f $(OBJ)
 
-fclean:    clean
-	@rm -rf $(NAME)
-	@rm -rf *~
+fclean:	clean
+	rm -rf $(NAME)
+	rm -rf *~
 
-re:	fclean all
+re : fclean all
+
+$(V).SILENT:

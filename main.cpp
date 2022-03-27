@@ -11,6 +11,13 @@
 using namespace std;
 
 int main(){
+    Client c1(2.0);
+    cout << c1.heureArrivee() << endl;
+
+    FileAttente f1(2.1);
+    
+    cout << f1.estVide() << endl;
+    /*
     int duree, nombreCaissiers;
     double tempsService, tempsArrivee;
     SED simulation;
@@ -41,7 +48,7 @@ int main(){
     for (int i = 0; i <nombreCaissiers; i++) {
         cout << " Taux d'occupation du caissier " << i + 1 << " : " << banque.caissiers()[i].tauxOccupation() << endl ;
     }
-
+*/
     return 0;
 }
 

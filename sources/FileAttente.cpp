@@ -11,8 +11,8 @@ FileAttente::FileAttente(double _tempsEntreArrivees) {
 }
 
 
-int FileAttente::longueurMax() {
-    if (_clients.size() > _longueurMax){
+unsigned int FileAttente::longueurMax() {
+    if (this->_clients.size() > this->_longueurMax){
         _longueurMax = _clients.size();
     }
     return this->_longueurMax;
@@ -40,6 +40,7 @@ void FileAttente::ajouter(Client c) {
 
 Client FileAttente::retirer() {
     Client c = this->_clients.front();
+    cout << c.heureArrivee() << endl;
     this->_clients.pop();
     //TODO heure départ (Client)
 
@@ -54,9 +55,6 @@ Client FileAttente::retirer() {
 
 
 bool FileAttente::estVide(){
-    if( _clients.size() == 0 )
-        return true;
-    else 
-        return false;
+    return this->_clients.empty();
 } 
 

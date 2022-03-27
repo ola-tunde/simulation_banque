@@ -1,9 +1,9 @@
 #ifndef FILEATTENTE_H
 #define FILEATTENTE_H
 
+#include <iostream>
 #include <queue> 
 //#include <ctime>
-#include <iostream>
 
 using namespace std;
 
@@ -16,12 +16,13 @@ class FileAttente
         FileAttente(double _tempsEntreArrivees);
 
         double tempsEntreArrivees();
-        int longueurMax();
+        unsigned int longueurMax();
         double longueurMoyenne();
         double tempsMoyenAttente();
         void ajouter(Client c);
         Client retirer();
         bool estVide();
+        queue<Client> clients();
 
     protected: 
 
@@ -30,6 +31,7 @@ class FileAttente
         double _longueurMoyenne;
         double _tempsMoyenAttente;
         double _tempsEntreArrivees;
+        
         queue<Client> _clients; 
 };
 

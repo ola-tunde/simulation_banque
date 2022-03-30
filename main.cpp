@@ -11,20 +11,13 @@
 using namespace std;
 
 int main(){
-    Client c1(2.0);
-    cout << c1.heureArrivee() << endl;
-
-    FileAttente f1(2.1);
-    
-    cout << f1.estVide() << endl;
-    /*
     int duree, nombreCaissiers;
     double tempsService, tempsArrivee;
     SED simulation;
     simulation.lancer();
-    cout << "Bienvenue à la simulation de banque\n" << endl;
+    cout << "Bienvenue a la simulation de banque\n" << endl;
     cout << "Il est " << simulation.heure() << endl;
-    cout << "Durée prévue de la simulation : ";
+    cout << "Duree prevue de la simulation : ";
     cin >> duree;
     cout <<" " << endl;
     cout << "Nombre de caissiers : " ;
@@ -34,14 +27,13 @@ int main(){
     cin >> tempsService;
     cout <<" " << endl;
     Banque banque = Banque(nombreCaissiers, duree, tempsService);
-    
-    cout << "Temps entre deux arrivées : ";
+
+    cout << "Temps entre deux arrivees : ";
     cin >> tempsArrivee;
     FileAttente fileAttente = *(new FileAttente(tempsArrivee));
-
     cout << "Fin de la simulation :"  ;
-
-    cout << " Durée réelle de la simulation : " << banque.dureeReelle() << endl ;
+/*
+    cout << " Duree reelle de la simulation : " << banque.dureeReelle() << endl ;
     cout << " Longueur max de la file d'attente : " << fileAttente.longueurMax() << endl ;
     cout << " Longueur moyenne de la file d'attente : " << fileAttente.longueurMoyenne() << endl ;
     cout << " Temps d'attente client de la file d'attente : " << fileAttente.tempsMoyenAttente() << endl ;

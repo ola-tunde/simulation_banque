@@ -1,9 +1,12 @@
 #ifndef BANQUE_H
 #define BANQUE_H
 
+#include <vector>
+
 #include "Caissier.h"
 //#include "FileAttente.h"
 #include "SED.h"
+
 
 using namespace std;
 
@@ -16,18 +19,18 @@ class Banque : public SED
         int nbCaissiers();
         double dureeReelle();
         int nbClients();
-        Caissier* caissiers(); 
+        vector<Caissier> caissiers();
         Caissier premierCaissierLibre();
-        
+
     protected:
-       
+
     private:
         double _dureePrevue;
         int _nbCaissiers;
         double _dureeReelle;
-        int _nbClients; 
-        Caissier* _caissiers; 
-        
+        int _nbClients;
+        vector<Caissier> _caissiers;
+
 };
 
 

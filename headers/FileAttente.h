@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#include <vector>
+
 #include "Client.h"
 
 
@@ -15,14 +17,14 @@ class FileAttente
     public:
         FileAttente(double _tempsEntreArrivees);
 
-        double tempsEntreArrivees();
         unsigned int longueurMax();
         double longueurMoyenne();
         double tempsMoyenAttente();
+        double tempsEntreArrivees();
         void ajouter(Client c);
         Client retirer();
         bool estVide();
-        queue<Client> clients();
+        vector<Client> clients();
 
     protected: 
 
@@ -31,8 +33,7 @@ class FileAttente
         double _longueurMoyenne;
         double _tempsMoyenAttente;
         double _tempsEntreArrivees;
-        
-        queue<Client> _clients; 
+        vector<Client> _clients; 
 };
 
 

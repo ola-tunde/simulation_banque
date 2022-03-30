@@ -1,3 +1,14 @@
+/**
+ * @file Caissier.h
+ * @author Jean-Philippe Afouda & Emil Raducanu
+ * @brief Classe Caissier
+ * @version 0.1
+ * @date 2022-03-30
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "../headers/Caissier.h"
 
 

@@ -6,12 +6,12 @@
 class Evenement
 {
     public:  
-        Evenement();  
+        Evenement(double _heure);  //TODO ajouter une SED
     protected:
        virtual void heure();
        virtual void traiter();
     private:
-        
+        double _heure;
 };
 
 

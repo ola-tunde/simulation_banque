@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Evenement::Evenement(){}
+Evenement::Evenement(double _heure){}
 
 void Evenement::heure(){}
 void Evenement::traiter(){}

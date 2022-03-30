@@ -28,3 +28,7 @@ fclean:	clean
 re : fclean all
 
 $(V).SILENT:
+
+#TODO How to generate doxygen documentation
+docs :
+	doxygen ./Doxyfile

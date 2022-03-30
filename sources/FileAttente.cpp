@@ -6,14 +6,15 @@ using namespace std;
 
 FileAttente::FileAttente(double _tempsEntreArrivees) {
     this->_longueurMax = 0;
+    this->_longueurMoyenne = 0;
     this->_tempsMoyenAttente = 0;
     this->_tempsEntreArrivees = _tempsEntreArrivees;
 }
 
 
 unsigned int FileAttente::longueurMax() {
-    if (this->_clients.size() > this->_longueurMax){
-        _longueurMax = _clients.size();
+    if (this->_clients.size() > this->_longueurMax) {
+        this->_longueurMax = this->_clients.size();
     }
     return this->_longueurMax;
 }
@@ -34,14 +35,15 @@ double FileAttente::tempsEntreArrivees() {
 
 
 void FileAttente::ajouter(Client c) {
-    this->_clients.push(c);
+    this->_clients.push_back(c);
 }
 
 
 Client FileAttente::retirer() {
     Client c = this->_clients.front();
     cout << c.heureArrivee() << endl;
-    this->_clients.pop();
+
+    this->_clients.erase(this->_clients.begin());
     //TODO heure départ (Client)
 
     if (this->_tempsMoyenAttente == 0.0) {
@@ -56,5 +58,5 @@ Client FileAttente::retirer() {
 
 bool FileAttente::estVide(){
     return this->_clients.empty();
-} 
+}
 

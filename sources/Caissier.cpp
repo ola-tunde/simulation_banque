@@ -6,7 +6,6 @@ using namespace std;
 
 Caissier::Caissier(double _tempsMoyenService){
     this->_nbClients = 0;
-    this->_tempsMoyenService = 0.0;
     this->_estLibre = true;
     this->_tempsMoyenService = _tempsMoyenService;
     
@@ -35,6 +34,6 @@ void Caissier::servir (Client c){
 } 
  
 void Caissier::attendre(){
-    cout << "Client attendu" << endl;
+    cout << "Attendre..." << endl;
     
 }

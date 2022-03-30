@@ -7,11 +7,10 @@ Banque::Banque(int _nbCaissiers, double _dureePrevue, double tempsService) : SED
     this->_dureePrevue = _dureePrevue ;
     this->_nbCaissiers = _nbCaissiers ;
     this->_nbClients = 1;
-       
+
     for (int i = 0; i < _nbCaissiers; i++) {
-        this->_caissiers[i] = Caissier(tempsService);
+        this->_caissiers.push_back(Caissier(tempsService));
     }
-    
 }
 
 double Banque::dureePrevue(){
@@ -27,7 +26,6 @@ int Banque::nbCaissiers(){
 }
 
 int Banque::nbClients(){
-
     this->_nbClients = 0;
 
     for (int i = 0; i < this->_nbCaissiers; i++){
@@ -37,11 +35,11 @@ int Banque::nbClients(){
     return this->_nbClients;
 }
 
-Caissier* Banque::caissiers(){
+vector<Caissier> Banque::caissiers(){
     return this->_caissiers;
 }
 
- 
+
 Caissier Banque::premierCaissierLibre(){
     for (int i = 0; i < this->_nbCaissiers; i++) {
         if (this->_caissiers[i].estLibre()) {
@@ -49,6 +47,6 @@ Caissier Banque::premierCaissierLibre(){
             return this->_caissiers[i];
         }
     }
-    cout << "Aucun caissier libre !" << endl;  
+    cout << "Aucun caissier libre !" << endl;
     return 0;
 }

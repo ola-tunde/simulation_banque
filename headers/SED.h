@@ -1,7 +1,7 @@
 #ifndef SED_H
 #define SED_H
 
-#include <queue>
+#include <vector>
 
 #include "Evenement.h"
 using namespace std;
@@ -10,13 +10,13 @@ class SED
     public:
         SED();
 
-        void ajouter (Evenement e);
+        void ajouter (Evenement *e);
         void lancer();
         double heure();
-        queue<Evenement> evenements();
+        void setheure(double _heure);
         
     protected:
-        queue<Evenement> _evenements;
+        vector<Evenement *> _evenements;
         double _heure;
        
     private:

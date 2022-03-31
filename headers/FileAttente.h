@@ -19,6 +19,7 @@
 #include "Client.h"
 #include "Banque.h"
 
+
 using namespace std;
 class Banque;
 class FileAttente

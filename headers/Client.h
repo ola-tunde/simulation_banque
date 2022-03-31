@@ -12,7 +12,6 @@
 #define CLIENT_H
 
 using namespace std;
-
 class Client
 {
     public:

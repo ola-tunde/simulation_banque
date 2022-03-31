@@ -34,7 +34,7 @@ class Banque : public SED
          * @param _dureePrevue la durée prévue de la simulation
          * @param tempsService le temps de service de chaque caissier
          */
-        Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee); );
+        Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee);
 
         /**
          * @brief Getter de la durée prévue de la simulation
@@ -72,9 +72,9 @@ class Banque : public SED
          */
         Caissier premierCaissierLibre();
 
-        FileAttente fileAttente();
+        FileAttente *fileAttente();
 
-        vector<Evenement> evenements();
+        vector<Evenement*> evenements();
 
         double tempsEntreArrivees();
 
@@ -113,7 +113,9 @@ class Banque : public SED
          */
         vector<Caissier> _caissiers;
 
-        FileAttente _fileAttente;
+        FileAttente *_fileAttente;
+
+        Poisson *_generateur;
 
 
 };

@@ -15,6 +15,7 @@
 #include "Client.h"
 #include "FileAttente.h"
 
+
 class Caissier
 {
     public:

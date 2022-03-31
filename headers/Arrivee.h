@@ -5,6 +5,7 @@
 #include "Banque.h"
 
 class Banque;
+
 class Arrivee : public Evenement
 {
     public:

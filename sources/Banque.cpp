@@ -22,7 +22,8 @@ using namespace std;
  */
 Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
     //FIXME comment utiliser poisson pour générer
-    Poisson *_generateur = new Poisson(tempsMoyenArrivee);
+    _generateur->init();
+    //Poisson *_generateur = new Poisson(tempsMoyenArrivee);
     this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
     this->_dureePrevue = _dureePrevue;
     this->_nbCaissiers = _nbCaissiers;
@@ -98,7 +99,7 @@ FileAttente *Banque::fileAttente(){
 
 double tempsEntreArrivees(){
     //FIXME comment utiliser poisson pour générer
-    return _generateur->next();
+    return _generateur->next(FileAttente::tempsEntreArrivees());
 }
 
 Banque::~Banque(){

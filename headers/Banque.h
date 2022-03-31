@@ -76,7 +76,7 @@ class Banque : public SED
 
         vector<Evenement*> evenements();
 
-        double tempsEntreArrivees();
+        double tpsEntreArrivees();
 
         ~Banque();
 

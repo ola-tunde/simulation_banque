@@ -5,25 +5,22 @@
 using namespace std;
 
 Arrivee::Arrivee(double _heure, Banque *_banque){
-    this->_heure =  _heure;
-    this->_banque = _banque;
+    _heure =  _heure;
+    _banque = _banque;
 }
 
-    
 void Arrivee::traiter(){
-    Client _client = Client(_heure);
-    Caissier* _caissier = _banque.premierCaissierLibre();
+    
     if (_banque->heure() < _banque->dureePrevue()){
-        this->_heure = _banque->tempsEntreArrivees() + this->_heure;
-        _banque->setHeure(this->_heure);
-        _banque->evenements().push_back(&(new Arrivee(this->_heure, this->_banque)));
-    }
-    if (_caissier != NULL){
-        _banque-
+        double heure = _banque->tempsEntreArrivees() + _heure;
+        _banque->setheure(heure);
+        _banque->evenements().push_back(new Arrivee(heure, _banque));
+    }//FIXME régler l'arrivée
+    if (_banque->premierCaissierLibre() != NULL){
+        _banque->fileAttente()->ajouter(new Client(_heure));
     }
     else{
-        _caissier->servir(_client);
+        _banque->premierCaissierLibre()->servir(new Client(_heure));
     }
 }
 
- // TODO classe Arrivee qui va créer un nouveau client et l'ajouter à la file d'attente

@@ -14,16 +14,21 @@
 
 #include <iostream>
 using namespace std;
-
-Caissier::Caissier(double _tempsMoyenService){
+/**
+ * @brief Constructeur de la classe Caissier
+ * 
+ * @param _tempsEntreArrivees qui automatise l'arrivée des clients
+ * @param _banque référence sur la banque auquel il appartient
+ */
+Caissier::Caissier(double _tempsMoyenService, Banque* banque){
+    this->banque = banque;
     this->_nbClients = 0;
     this->_estLibre = true;
-    this->_tempsMoyenService = _tempsMoyenService;
     
 }
 
 double Caissier::tempsMoyenService(){
-    return this->_tempsMoyenService;
+    return accumulate(_tempsService.begin(), _tempsService.end(), 0) / _tempsService.size();
 }
 
 int Caissier::nbClients(){
@@ -31,20 +36,25 @@ int Caissier::nbClients(){
 }
 
 double Caissier::tauxOccupation(){
-    return this->_tauxOccupation;
+    return accumulate(_tempsService.begin(), _tempsService.end(), 0) / banque->dureeReelle();
 }
 
 bool Caissier::estLibre(){
-    return this->_estLibre;
+    if (banque->fileAttente()->estVide()){
+        this->_estLibre = true;
+    }
+    else{
+        this->_estLibre = false;
+        servir(banque->fileAttente()->retirer());
+    }
+    return _estLibre;
 } 
-
-void Caissier::servir (Client c){
+//TODO revoir servir le cient
+void Caissier::servir (Client *c){
     cout << "Client servi" << endl;
     delete &c;
     this->_nbClients++;
+    _estLibre = false;
 } 
  
-void Caissier::attendre(){
-    cout << "Attendre..." << endl;
-    
-}
+void Caissier::attendre(){}

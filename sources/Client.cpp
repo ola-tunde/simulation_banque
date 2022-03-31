@@ -22,7 +22,6 @@ Client::Client(double _heureArrivee){
     this->_heureArrivee = _heureArrivee;
 }
 
-// TODO heure arrivée (Client)
 /**
  * @brief Getter de l'heure d'arrivée du client
  *

@@ -61,10 +61,10 @@ class Banque : public SED
         int nbClients();
 
         /**
-         * @brief Getter pour retourner les objets de la classe Caissier
+         * @brief Getter pour retourner le Caissier
          * 
          */
-        vector<Caissier> caissiers();
+        vector<Caissier*> getCaissier();
 
         /**
          * @brief Méthode pour retourner le premier caissier libre dans la file d'attente
@@ -111,7 +111,7 @@ class Banque : public SED
          * @brief ensemble de caissiers dans la banque
          * 
          */
-        vector<Caissier> _caissiers;
+        vector<Caissier *> _caissiers;
 
         FileAttente *_fileAttente;
 

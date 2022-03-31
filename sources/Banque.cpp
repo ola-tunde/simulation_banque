@@ -21,6 +21,7 @@ using namespace std;
  * @param tempsMoyenArrivee le temps moyen d'arrivée d'un client
  */
 Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
+    //FIXME comment utiliser poisson pour générer
     Poisson *_generateur = new Poisson(tempsMoyenArrivee);
     this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
     this->_dureePrevue = _dureePrevue;
@@ -30,7 +31,7 @@ Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsServic
     _evenements.push_back(new Arrivee(this->tempsEntreArrivees(), this));
     
     for (int i = 0; i < tempsService.size(); i++){
-        this->_caissiers.push_back(new Caissier(tempsService[i], this));
+        _caissiers.push_back(new Caissier(tempsService[i],this));
     }
 }
 
@@ -66,19 +67,12 @@ int Banque::nbClients(){
     this->_nbClients = 0;
 
     for (int i = 0; i < this->_caissiers.size(); i++){
-        this->_nbClients += this->_caissiers[i].nbClients();
+        this->_nbClients += _caissiers[i]->nbClients();
     }
 
     return this->_nbClients;
 }
 
-/**
- * @brief Getter du nombre de caissiers dans la banque
- *
- */
-vector<Caissier> Banque::caissiers(){
-    return this->_caissiers;
-}
 
 vector<Evenement*> Banque::evenements(){
     return _evenements;   
@@ -91,12 +85,10 @@ vector<Evenement*> Banque::evenements(){
  */
 Caissier Banque::premierCaissierLibre(){
     for (int i = 0; i < this->_caissiers.size() -1 ; i++){
-        if (this->_caissiers[i].estLibre()){
-            cout << "Caissier numéro" << i + 1 << " est libre" << endl;
-            return this->_caissiers[i];
+        if (_caissiers[i]->estLibre()){
+            return *(_caissiers[i]);
         }
     }
-    cout << "Aucun caissier libre !" << endl;
     return NULL;
 }
 
@@ -105,6 +97,7 @@ FileAttente *Banque::fileAttente(){
 }
 
 double tempsEntreArrivees(){
+    //FIXME comment utiliser poisson pour générer
     return _generateur->next();
 }
 

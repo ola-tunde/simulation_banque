@@ -29,9 +29,10 @@ class FileAttente
          * @brief Constructeur de la classe FileAttente
          * 
          * @param _tempsEntreArrivee qui automatise l'arrivée des clients
+         * @param banque pointeur sur la banque de la file d'attente
          */
-        FileAttente(double _tempsEntreArrivees, Banque *_banque);//TODO rajouter un pointeur sur la banque
-
+        FileAttente(double _tempsEntreArrivees, Banque *_banque);
+        
         /**
          * @brief Getter de la longueur Max de la file d'attente
          * 
@@ -121,7 +122,7 @@ class FileAttente
         double _last;
 
         /**
-         * @brief intégrale sur les temps d'attente
+         * @brief somme des temps d'attente
          * 
          */
         double _aire;

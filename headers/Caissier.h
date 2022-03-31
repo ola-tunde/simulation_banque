@@ -12,6 +12,8 @@
 #ifndef CAISSIER_H
 #define CAISSIER_H
 
+#include "Banque.h"
+#include "FileAttente.h"
 #include "Client.h"
 #include "FileAttente.h"
 
@@ -24,7 +26,7 @@ class Caissier
      * 
      * @param _tempsMoyenService 
      */
-        Caissier(double _tempsMoyenService);//TODO rajouter un pointeur sur la banque
+        Caissier(double _tempsMoyenService, Banque *banque);
 
     /**
      * @brief Getter du temps moyen de service du caissier
@@ -44,16 +46,34 @@ class Caissier
          */
         double tauxOccupation();
 
+        /**
+         * @brief vérifie si le caissier est libre
+         * 
+         * @return true si le caissier est libre
+         */
         bool estLibre();
-        void servir(Client c);
+
+        /**
+         * @brief servir un client
+         * 
+         * @param c 
+         */
+        void servir(Client *c);
+
+        /**
+         * @brief attendre un client s'il est libre
+         * 
+         */
         void attendre();
 
     protected:
     private:
+        Banque *banque;
         double _tempsMoyenService;
         int _nbClients;
         double _tauxOccupation;
         bool _estLibre; 
+        vector<double>_tempsService;
 };
 
 #endif // CAISSIER_H

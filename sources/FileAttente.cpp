@@ -36,7 +36,6 @@ unsigned int FileAttente::longueurMax(){
     return this->_longueurMax;
 }
 
-// TODO demander de la longueurMoyenne (FileAttente)
 /**
  * @brief Getter de la longueur moyenne de la file d'attente
  *
@@ -50,10 +49,9 @@ double FileAttente::longueurMoyenne(){
  *
  */
 double FileAttente::tempsMoyenAttente(){
-    return accumulate(_tempsAttente.begin(), _tempsAttente.end(), 0.0) / _tempsAttente.size();
+    return accumulate(_tempsAttente.begin(), _tempsAttente.end(), 0) / _tempsAttente.size();
 }
 
-// TODO générer le tempsEntreArrivees (Client)
 /**
  * @brief Getter du temps entre les arrivées dans la file d'attente
  *
@@ -86,7 +84,7 @@ Client* FileAttente::retirer(){
     this->_last = _banque->heure();
     
     Client *c = this->_clients.front();
-    this->_tempsAttente.push_back(_banque->heure() - c.heureArrivee());
+    this->_tempsAttente.push_back(_banque->heure() - c->heureArrivee());
 
     this->_clients.erase(this->_clients.begin());
     

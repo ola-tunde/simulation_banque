@@ -20,10 +20,11 @@ using namespace std;
  * @param _tempsEntreArrivee qui automatise l'arrivée des clients
  */
 
-FileAttente::FileAttente(double _tempsEntreArrivees){
+FileAttente::FileAttente(double _tempsEntreArrivees, Banque *_banque){
     this->_longueurMax = 0;
     this->_longueurMoyenne = 0;
-    this->_tempsMoyenAttente = 0;
+    this->_aire = 0;
+    this->_banque = _banque;
     this->_tempsEntreArrivees = _tempsEntreArrivees;
 }
 
@@ -32,10 +33,6 @@ FileAttente::FileAttente(double _tempsEntreArrivees){
  *
  */
 unsigned int FileAttente::longueurMax(){
-    if (this->_clients.size() > this->_longueurMax)
-    {
-        this->_longueurMax = this->_clients.size();
-    }
     return this->_longueurMax;
 }
 
@@ -45,7 +42,7 @@ unsigned int FileAttente::longueurMax(){
  *
  */
 double FileAttente::longueurMoyenne(){
-    return this->_longueurMoyenne;
+    return _aire / _banque->heure();
 }
 
 /**
@@ -53,7 +50,7 @@ double FileAttente::longueurMoyenne(){
  *
  */
 double FileAttente::tempsMoyenAttente(){
-    return this->_tempsMoyenAttente;
+    return accumulate(_tempsAttente.begin(), _tempsAttente.end(), 0.0) / _tempsAttente.size();
 }
 
 // TODO générer le tempsEntreArrivees (Client)
@@ -70,28 +67,29 @@ double FileAttente::tempsEntreArrivees(){
  *
  * @param c Client à ajouter
  */
-void FileAttente::ajouter(Client c){
+void FileAttente::ajouter(Client *c){
+    _aire += (_banque->heure() - _last) * _clients.size();
     this->_clients.push_back(c);
+
+    if (this->_clients.size() > this->_longueurMax)
+    {
+        this->_longueurMax = this->_clients.size();
+    }
 }
 
 /**
  * @brief Méthode pour retirer un client de la file d'attente
  * @details On retirer le premier client de la file d'attente et on calcule le temps moyen d'attente
  */
-Client FileAttente::retirer(){
-    Client c = this->_clients.front();
-    cout << c.heureArrivee() << endl;
+Client* FileAttente::retirer(){
+    this->_aire += (_banque->heure() - this->_last) * _clients.size();
+    this->_last = _banque->heure();
+    
+    Client *c = this->_clients.front();
+    this->_tempsAttente.push_back(_banque->heure() - c.heureArrivee());
 
     this->_clients.erase(this->_clients.begin());
-    // TODO heure départ (Client)
-
-    if (this->_tempsMoyenAttente == 0.0){
-        this->_tempsMoyenAttente = c.heureDepart();
-    }
-    else{
-        this->_tempsMoyenAttente = (this->_tempsMoyenAttente + (c.heureDepart() - c.heureDepart())) / 2;
-    }
-
+    
     return c;
 }
 

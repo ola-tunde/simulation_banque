@@ -17,15 +17,20 @@ using namespace std;
  *
  * @param _nbCaissiers le nombre de caissiers dans la banque
  * @param _dureePrevue la durée prévue de la simulation
- * @param tempsService le temps de service de chaque caissier
+ * @param tempsService la collection des temps de service de chaque caissier
+ * @param tempsMoyenArrivee le temps moyen d'arrivée d'un client
  */
-Banque::Banque(int _nbCaissiers, double _dureePrevue, double tempsService) : SED() {
+Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
+    Poisson *_generateur = new Poisson(tempsMoyenArrivee);
+    this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
     this->_dureePrevue = _dureePrevue;
     this->_nbCaissiers = _nbCaissiers;
     this->_nbClients = 1;
 
-    for (int i = 0; i < _nbCaissiers; i++){
-        this->_caissiers.push_back(Caissier(tempsService));
+    _evenements.push_back(new Arrivee(this->tempsEntreArrivees(), this));
+    
+    for (int i = 0; i < tempsService.size(); i++){
+        this->_caissiers.push_back(new Caissier(tempsService[i], this));
     }
 }
 
@@ -34,7 +39,7 @@ Banque::Banque(int _nbCaissiers, double _dureePrevue, double tempsService) : SED
  *
  */
 double Banque::dureePrevue(){
-    return this->_dureePrevue;
+    return this->_heure;
 }
 
 /**
@@ -50,7 +55,7 @@ double Banque::dureeReelle(){
  *
  */
 int Banque::nbCaissiers(){
-    return this->_nbCaissiers;
+    return this->_caissiers.size();
 }
 
 /**
@@ -60,7 +65,7 @@ int Banque::nbCaissiers(){
 int Banque::nbClients(){
     this->_nbClients = 0;
 
-    for (int i = 0; i < this->_nbCaissiers; i++){
+    for (int i = 0; i < this->_caissiers.size(); i++){
         this->_nbClients += this->_caissiers[i].nbClients();
     }
 
@@ -81,12 +86,29 @@ vector<Caissier> Banque::caissiers(){
  * @return l'index du caissier libre
  */
 Caissier Banque::premierCaissierLibre(){
-        for (int i = 0; i < this->_nbCaissiers; i++){
+    for (int i = 0; i < this->_caissiers.size() -1 ; i++){
         if (this->_caissiers[i].estLibre()){
             cout << "Caissier numéro" << i + 1 << " est libre" << endl;
             return this->_caissiers[i];
         }
     }
     cout << "Aucun caissier libre !" << endl;
-    return 0;
+    return NULL;
+}
+
+FileAttente Banque::fileAttente(){
+    return *this->_fileAttente;
+}
+
+double tempsEntreArrivees(){
+    return this->_generateur->next();
+}
+
+Banque::~Banque(){
+    delete this->_fileAttente;
+    delete this->_generateur;
+
+    for (int i = 0; i < this->_caissiers.size()-1; i++){
+        delete this->_caissiers[i];
+    }
 }

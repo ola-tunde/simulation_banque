@@ -13,12 +13,14 @@
 #define FILEATTENTE_H
 
 #include <iostream>
-#include <deque> 
+#include <vector> 
+#include <numeric> 
 
 #include "Client.h"
+#include "Banque.h"
 
 using namespace std;
-//TODO utiliser la lib deque
+class Banque;
 class FileAttente
 {
     public:
@@ -27,7 +29,7 @@ class FileAttente
          * 
          * @param _tempsEntreArrivee qui automatise l'arrivée des clients
          */
-        FileAttente(double _tempsEntreArrivees);//TODO rajouter un pointeur sur la banque
+        FileAttente(double _tempsEntreArrivees, Banque *_banque);//TODO rajouter un pointeur sur la banque
 
         /**
          * @brief Getter de la longueur Max de la file d'attente
@@ -58,13 +60,13 @@ class FileAttente
          * 
          * @param c Client à ajouter
          */
-        void ajouter(Client c);
+        void ajouter(Client *c);
 
         /**
          * @brief Méthode pour retirer un client de la file d'attente
-         * 
+         * et renvoie la référence du client retiré
          */
-        Client retirer();
+        Client* retirer();
 
         /**
          * @brief Méthode pour vérifier si la file d'attente est vide
@@ -76,7 +78,7 @@ class FileAttente
          * @brief Getter pour retourner les objets de la classe FileAttente
          * 
          */
-        deque<Client> clients();
+        vector<Client> clients();
 
     protected: 
 
@@ -109,7 +111,31 @@ class FileAttente
          * @brief liste des clients dans la file d'attente
          * 
          */
-        deque<Client> _clients; 
+        vector<Client*> _clients; 
+
+        /**
+         * @brief pointeur sur le dernier temps d'arrivée
+         * 
+         */
+        double _last;
+
+        /**
+         * @brief intégrale sur les temps d'attente
+         * 
+         */
+        double _aire;
+
+        /**
+         * @brief collection des temps d'attente 
+         * 
+         */
+        vector<double> _tempsAttente;
+
+        /**
+         * @brief référence sur la banque qui contient la file d'attente
+         * 
+         */
+        Banque *_banque;
 };
 
 

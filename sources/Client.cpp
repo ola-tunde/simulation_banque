@@ -30,3 +30,7 @@ Client::Client(double _heureArrivee){
 double Client::heureArrivee(){
     return this->_heureArrivee;
 }
+
+
+Client::~Client(){
+}

@@ -4,15 +4,16 @@
 #include "Evenement.h"
 #include "Banque.h"
 
+class Banque;
 class Arrivee : public Evenement
 {
     public:
-        Arrivee(double _heure,const Banque &banque);
+        Arrivee(double _heure, Banque *_banque);
+        void traiter();
     protected:
     private:
-        void traiter();
-        double _heure;
-        Banque &banque;   
+        double _heure;  
+        Banque *_banque;
 };
 
 

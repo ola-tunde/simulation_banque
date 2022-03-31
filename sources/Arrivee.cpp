@@ -1,23 +1,28 @@
 #include "../headers/Arrivee.h"
-#include "../headers/Client.h"
-#include "../headers/Caissier.h"
 #include "../headers/Banque.h"
 
 #include <iostream>
 using namespace std;
 
-Arrivee::Arrivee(double _heure, const Banque &banque) : Evenement (_heure) {
+Arrivee::Arrivee(double _heure, Banque *_banque)  {
     this->_heure =  _heure;
+    this->_banque = _banque;
 }
 
+    
 void Arrivee::traiter(){
-    Client* client = new Client(_heure);
-    Caissier* caissier = banque.premierCaissierLibre();
-    if (caissier != NULL){
-        banque->fileAttente()->ajouter(client);
+    Client _client = Client(_heure);
+    Caissier* _caissier = _banque.premierCaissierLibre();
+    if (_banque->heure() < _banque->dureePrevue()){
+        this->_heure = _banque->tempsEntreArrivees() + this->_heure;
+        _banque->setHeure(this->_heure);
+        _banque->getEvenements().push_back(&(new Arrivee(this->_heure, this->_banque)));
+    }
+    if (_caissier != NULL){
+        _banque-
     }
     else{
-       caissier->servir(client);
+        _caissier->servir(_client);
     }
 }
 

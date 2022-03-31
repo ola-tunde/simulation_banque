@@ -27,9 +27,13 @@ class Client
          * 
          */
         double heureArrivee();
-        
-        
-    protected:
+
+        /**
+         * @brief Destructeur de la classe Client
+         * 
+         */
+        ~Client();
+
        
     private:
         /**

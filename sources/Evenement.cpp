@@ -5,5 +5,7 @@ using namespace std;
 
 Evenement::Evenement(double _heure){}
 
-void Evenement::heure(){}
+double Evenement::heure(){
+    return this->_heure;
+}
 void Evenement::traiter(){}

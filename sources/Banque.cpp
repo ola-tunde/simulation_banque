@@ -80,6 +80,10 @@ vector<Caissier> Banque::caissiers(){
     return this->_caissiers;
 }
 
+vector<Evenement*> Banque::evenements(){
+    return _evenements;   
+}
+
 /**
  * @brief Méthode pour retourner le premier caissier libre dans la file d'attente
  *
@@ -96,19 +100,20 @@ Caissier Banque::premierCaissierLibre(){
     return NULL;
 }
 
-FileAttente Banque::fileAttente(){
-    return *this->_fileAttente;
+FileAttente *Banque::fileAttente(){
+    return this->_fileAttente;
 }
 
 double tempsEntreArrivees(){
-    return this->_generateur->next();
+    return _generateur->next();
 }
 
 Banque::~Banque(){
-    delete this->_fileAttente;
-    delete this->_generateur;
+    delete _fileAttente;
+    delete _generateur;
 
     for (int i = 0; i < this->_caissiers.size()-1; i++){
         delete this->_caissiers[i];
     }
+    _caissiers.clear();
 }

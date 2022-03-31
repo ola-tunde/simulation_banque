@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-Arrivee::Arrivee(double _heure, Banque *_banque)  {
+Arrivee::Arrivee(double _heure, Banque *_banque){
     this->_heure =  _heure;
     this->_banque = _banque;
 }
@@ -16,7 +16,7 @@ void Arrivee::traiter(){
     if (_banque->heure() < _banque->dureePrevue()){
         this->_heure = _banque->tempsEntreArrivees() + this->_heure;
         _banque->setHeure(this->_heure);
-        _banque->getEvenements().push_back(&(new Arrivee(this->_heure, this->_banque)));
+        _banque->evenements().push_back(&(new Arrivee(this->_heure, this->_banque)));
     }
     if (_caissier != NULL){
         _banque-

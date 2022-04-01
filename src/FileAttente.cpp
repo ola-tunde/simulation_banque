@@ -77,7 +77,7 @@ void FileAttente::ajouter(Client *c){
 
 /**
  * @brief Méthode pour retirer un client de la file d'attente
- * @details On retirer le premier client de la file d'attente et on calcule le temps moyen d'attente
+ * @details On retire le premier client de la file d'attente et on calcule le temps moyen d'attente
  */
 Client* FileAttente::retirer(){
     this->_aire += (_banque->heure() - this->_last) * _clients.size();

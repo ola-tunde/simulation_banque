@@ -134,7 +134,7 @@ class FileAttente
         vector<double> _tempsAttente;
 
         /**
-         * @brief référence sur la banque qui contient la file d'attente
+         * @brief référence sur la banque dans laquelle se trouve la file d'attente
          * 
          */
         Banque *_banque;

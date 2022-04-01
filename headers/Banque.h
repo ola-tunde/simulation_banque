@@ -32,6 +32,7 @@ class Banque : public SED
          * 
          * @param _nbCaissiers le nombre de caissiers dans la banque
          * @param _dureePrevue la durée prévue de la simulation
+         * @param vector<double> tempsService la collection des temps de service de chaque caissier
          * @param tempsService le temps de service de chaque caissier
          */
         Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee);
@@ -60,24 +61,35 @@ class Banque : public SED
          */
         int nbClients();
 
+        
         /**
-         * @brief Getter pour retourner le Caissier
+         * @brief Méthode pour retourner la référence du premier caissier libre par ordre croissant
          * 
          */
-        vector<Caissier*> getCaissier();
+        Caissier* premierCaissierLibre();
 
         /**
-         * @brief Méthode pour retourner le premier caissier libre dans la file d'attente
+         * @brief Méthode pour retourner la référence de la file d'attente
          * 
          */
-        Caissier premierCaissierLibre();
-
         FileAttente *fileAttente();
 
+        /**
+        * @brief collection de tous les événements de la simulation
+        *
+        */
         vector<Evenement*> evenements();
-
+        
+        /**
+        * @brief Méthode pour retourner le temps entre chaque arrivée
+        *
+         */
         double tpsEntreArrivees();
 
+        /**
+         * @brief Destructeur de la classe Banque
+         * 
+         */
         ~Banque();
 
     protected:
@@ -113,8 +125,16 @@ class Banque : public SED
          */
         vector<Caissier *> _caissiers;
 
+        /**
+         * @brief file d'attente de la banque
+         * 
+         */
         FileAttente *_fileAttente;
 
+        /**
+         * @brief générateur de nombres aléatoires
+         * 
+         */
         Poisson *_generateur;
 
 

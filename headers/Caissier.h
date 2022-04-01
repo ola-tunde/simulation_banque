@@ -24,7 +24,8 @@ class Caissier
     /**
      * @brief Constructeur de la classe Caissier
      * 
-     * @param _tempsMoyenService 
+     * @param _tempsMoyenService par simulation de banque
+     * @param banque dans laquelle le caissier travaille
      */
         Caissier(double _tempsMoyenService, Banque *banque);
 
@@ -56,7 +57,8 @@ class Caissier
         /**
          * @brief servir un client
          * 
-         * @param c 
+         * @param c la référence sur le client à servir
+         *
          */
         void servir(Client *c);
 
@@ -68,11 +70,42 @@ class Caissier
 
     protected:
     private:
+        /**
+         * @brief référence sur la banque du caissier
+         * 
+         */
         Banque *banque;
+
+        /**
+         * @brief temps moyen de service du caissier
+         * 
+         */
         double _tempsMoyenService;
+
+        /**
+         * @brief nombre de clients servi par le caissier
+         * 
+         */
         int _nbClients;
+
+        /**
+         * @brief taux d'occupation du caissier sur l'ensemble de la simulation
+         * 
+         */
         double _tauxOccupation;
+
+        /**
+         * @brief temps d'attente du caissier
+         * 
+         * @return true si le caissier est libre
+         *
+         */
         bool _estLibre; 
+
+        /**
+         * @brief collection de ses temps de service
+         * 
+         */
         vector<double>_tempsService;
 };
 

@@ -27,18 +27,35 @@ Caissier::Caissier(double _tempsMoyenService, Banque* banque){
     
 }
 
+/**
+* @brief Getter du temps moyen de service du caissier
+* 
+*/
 double Caissier::tempsMoyenService(){
     return accumulate(_tempsService.begin(), _tempsService.end(), 0) / _tempsService.size();
 }
 
+/**
+* @brief Getter du nombre de clients servi par caissier 
+* 
+*/
 int Caissier::nbClients(){
     return this->_nbClients;
 }
 
+/**
+* @brief Getter du taux d'occupation de chaque caissier
+* 
+*/
 double Caissier::tauxOccupation(){
     return accumulate(_tempsService.begin(), _tempsService.end(), 0) / banque->dureeReelle();
 }
 
+/**
+* @brief vérifie si le caissier est libre
+* 
+* @return true si le caissier est libre
+*/
 bool Caissier::estLibre(){
     if (banque->fileAttente()->estVide()){
         this->_estLibre = true;
@@ -49,12 +66,27 @@ bool Caissier::estLibre(){
     }
     return _estLibre;
 } 
+
 //TODO revoir servir le cient
+/**
+* @brief servir un client
+* 
+* @param c la référrence sur le client à servir
+*
+*/
 void Caissier::servir (Client *c){
     cout << "Client servi" << endl;
     delete &c;
     this->_nbClients++;
     _estLibre = false;
 } 
- 
-void Caissier::attendre(){}
+
+/**
+* @brief attendre un client s'il est libre
+* 
+*/ 
+void Caissier::attendre(){
+    if (this->_estLibre == true){
+        continue;  
+    }
+}

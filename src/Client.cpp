@@ -30,6 +30,9 @@ double Client::heureArrivee(){
     return this->_heureArrivee;
 }
 
-
+/**
+ * @brief Destructeur de la classe Client
+ *
+ */
 Client::~Client(){
 }

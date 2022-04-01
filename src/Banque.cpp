@@ -13,13 +13,13 @@
 #include <iostream>
 using namespace std;
 /**
- * @brief Constructeur de la classe Banque
- *
- * @param _nbCaissiers le nombre de caissiers dans la banque
- * @param _dureePrevue la durée prévue de la simulation
- * @param tempsService la collection des temps de service de chaque caissier
- * @param tempsMoyenArrivee le temps moyen d'arrivée d'un client
- */
+* @brief Constructeur de la classe Banque
+* 
+* @param _nbCaissiers le nombre de caissiers dans la banque
+* @param _dureePrevue la durée prévue de la simulation
+* @param vector<double> tempsService la collection des temps de service de chaque caissier
+* @param tempsService le temps de service de chaque caissier
+*/
 Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
     //FIXME comment utiliser poisson pour générer
     _generateur->init();
@@ -74,7 +74,10 @@ int Banque::nbClients(){
     return this->_nbClients;
 }
 
-
+/**
+ * @brief collection de tous les événements de la simulation
+ *
+ */
 vector<Evenement*> Banque::evenements(){
     return _evenements;   
 }
@@ -84,7 +87,7 @@ vector<Evenement*> Banque::evenements(){
  *
  * @return l'index du caissier libre
  */
-Caissier Banque::premierCaissierLibre(){
+Caissier* Banque::premierCaissierLibre(){
     for (int i = 0; i < this->_caissiers.size() -1 ; i++){
         if (_caissiers[i]->estLibre()){
             return *(_caissiers[i]);
@@ -93,15 +96,27 @@ Caissier Banque::premierCaissierLibre(){
     return NULL;
 }
 
+/**
+* @brief Méthode pour retourner la référence de la file d'attente
+* 
+*/
 FileAttente *Banque::fileAttente(){
     return this->_fileAttente;
 }
 
-double tempsEntreArrivees(){
+/**
+ * @brief Méthode pour retourner le temps entre chaque arrivée
+ *
+ */
+double tpsEntreArrivees(){
     //FIXME comment utiliser poisson pour générer
     return _generateur->next(FileAttente::tempsEntreArrivees());
 }
 
+/**
+* @brief Destructeur de la classe Banque
+* 
+*/
 Banque::~Banque(){
     delete _fileAttente;
     delete _generateur;

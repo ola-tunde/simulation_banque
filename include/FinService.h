@@ -1,7 +1,7 @@
 /**
  * @file FinService.h
  * @author Jean-Philippe Afouda & Emil Raducanu
- * @brief Classe de gestion de fin de service des caissiers
+ * @brief Classe FinService de gestion de fin de service des caissiers
  * @version 0.1
  * @date 2022-03-30
  * 

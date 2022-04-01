@@ -1,4 +1,4 @@
-// TODO commentaire doxygen
+
 #include <iostream>
 #include <string>
 #include "include/Banque.h"

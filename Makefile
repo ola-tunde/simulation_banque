@@ -39,4 +39,4 @@ $(V).SILENT:
 DOXYFILE = Doxyfile
 
 docs :
-	doxygen $(DOXYFILE)
+	@doxygen $(DOXYFILE)

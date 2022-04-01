@@ -1,7 +1,7 @@
 /**
  * @file Evenement.h
  * @author Jean-Philippe Afouda & Emil Raducanu
- * @brief Classe abstraite de gestion d'événènements
+ * @brief Classe Evenement abstraite de gestion d'événènements
  * @version 0.1
  * @date 2022-03-30
  * 

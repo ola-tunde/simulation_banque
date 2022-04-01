@@ -1,4 +1,15 @@
-#include "../headers/SED.h"
+/**
+ * @file SED.cpp
+ * @author Jean-Philippe Afouda & Emil Raducanu
+ * @brief Classe de la simulation d'événements discrets
+ * @version 0.1
+ * @date 2022-03-30
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+#include "../include/SED.h"
 
 #include <iostream>
 using namespace std;

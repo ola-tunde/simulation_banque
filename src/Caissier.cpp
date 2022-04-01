@@ -1,5 +1,5 @@
 /**
- * @file Caissier.h
+ * @file Caissier.cpp
  * @author Jean-Philippe Afouda & Emil Raducanu
  * @brief Classe Caissier
  * @version 0.1
@@ -9,7 +9,7 @@
  * 
  */
 
-#include "../headers/Caissier.h"
+#include "../include/Caissier.h"
 
 
 #include <iostream>

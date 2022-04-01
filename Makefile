@@ -30,7 +30,7 @@ clean :
 fclean:	clean
 	rm -rf $(NAME)
 	rm -rf *~
-	rm -rf Doc
+	rm -rf docs
 
 re : fclean all
 

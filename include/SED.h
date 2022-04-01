@@ -1,3 +1,14 @@
+/**
+ * @file SED.h
+ * @author Jean-Philippe Afouda & Emil Raducanu
+ * @brief Classe de la simulation d'événements discrets
+ * @version 0.1
+ * @date 2022-03-30
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef SED_H
 #define SED_H
 

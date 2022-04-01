@@ -1,4 +1,16 @@
-#include "../headers/Evenement.h"
+/**
+ * @file Evenement.cpp
+ * @author Jean-Philippe Afouda & Emil Raducanu
+ * @brief Classe abstraite de gestion d'événènements
+ * @version 0.1
+ * @date 2022-03-30
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+
+#include "../include/Evenement.h"
 
 #include <iostream>
 using namespace std;

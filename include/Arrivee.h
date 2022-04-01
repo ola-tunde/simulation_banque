@@ -1,3 +1,14 @@
+/**
+ * @file Arrivee.h
+ * @author Jean-Philippe Afouda & Emil Raducanu
+ * @brief Classe Arrivee des clients
+ * @version 0.1
+ * @date 2022-03-30
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef ARRIVEE_H
 #define ARRIVEE_H
 

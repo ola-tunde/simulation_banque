@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#include "../headers/Banque.h"
+#include "../include/Banque.h"
 
 #include <iostream>
 using namespace std;

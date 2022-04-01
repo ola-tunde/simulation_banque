@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2022
  *
 */
-#include "../headers/Client.h"
+#include "../include/Client.h"
 
 #include <iostream>
 using namespace std;

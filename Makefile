@@ -1,18 +1,24 @@
-SRC = sources/Banque.cpp \
-sources/Arrivee.cpp  \
-sources/Caissier.cpp  \
-sources/Client.cpp  \
-sources/Evenement.cpp  \
-sources/FileAttente.cpp  \
-sources/FinService.cpp  \
-sources/SED.cpp    \
+SRC = src/Banque.cpp \
+src/Arrivee.cpp  \
+src/Caissier.cpp  \
+src/Client.cpp  \
+src/Evenement.cpp  \
+src/FileAttente.cpp  \
+src/FinService.cpp  \
+src/SED.cpp    \
 main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 NAME = simulationBanque
 
-all : $(NAME)
+all : compile run #docs
+
+run : 
+	./$(NAME)
+
+
+compile : $(NAME)
 
 $(NAME) : $(OBJ)                                                       
 	g++ -o $(NAME) $(SRC) -W -Wall -Wextra -Werror -g3
@@ -24,10 +30,15 @@ clean :
 fclean:	clean
 	rm -rf $(NAME)
 	rm -rf *~
+	rm -rf $(DOC_DIR)
 
 re : fclean all
 
 $(V).SILENT:
 
+DOXYFILE = Doxyfile
+
+DOC_DIR = Doc/html
+
 docs :
-	doxygen ./Doxyfile
+	doxygen $(DOXYFILE)

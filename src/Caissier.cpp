@@ -68,7 +68,7 @@ bool Caissier::estLibre(){
     return _estLibre;
 } 
 
-//TODO revoir servir le cient
+//FIXME revoir servir le cient
 /**
 * @brief servir un client
 * 
@@ -80,7 +80,9 @@ void Caissier::servir (Client *c){
     _tempsService.push_back(heure);
     _estLibre = false;
     this->_nbClients++;
-    banque->evenements().push_back(new FinService(this, heure, c);
+
+    banque->evenements().push_back(new FinService(this, heure, c));
+    
 
 } 
 

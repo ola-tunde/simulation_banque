@@ -78,8 +78,10 @@ int Banque::nbClients(){
 /**
  * @brief collection de tous les événements de la simulation
  *
+ * @return vector<Evenement*>
+ *
  */
-vector<Evenement*> &Banque::evenements(){
+vector<Evenement *> &Banque::evenements(){
     return _evenements;   
 }
 

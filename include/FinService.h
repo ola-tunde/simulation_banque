@@ -28,8 +28,8 @@ class FinService : public Evenement
         void traiter();
 
     private:
-        Caissier *_caissier;
-        Client *_client;
+        Caissier* _caissier;
+        Client* _client;
         
 
 };

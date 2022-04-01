@@ -26,7 +26,7 @@ void SED::lancer(){
     while(!this->_evenements.empty()){
 
         double begin = this->_evenements[0]->heure();
-        for(int i = 0; i < this->_evenements.size(); i++){
+        for(int i = 0; i < (int)this->_evenements.size(); i++){
             
             if(this->_evenements[i]->heure() < begin){
                 
@@ -35,7 +35,7 @@ void SED::lancer(){
                 Evenement *evenement = this->_evenements[i];
 
                 evenement->traiter();
-                delete this->_evenements[i];
+                delete evenement;
                 this->_evenements.erase(this->_evenements.begin() + i);
             }
         }

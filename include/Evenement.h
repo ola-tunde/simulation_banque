@@ -18,9 +18,8 @@ class Evenement
     public:  
         double heure();
         virtual void traiter();
-    protected:
        
-    private:
+    protected:
         double _heure;
 };
 

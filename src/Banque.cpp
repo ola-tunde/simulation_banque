@@ -21,17 +21,19 @@ using namespace std;
 * @param tempsService le temps de service de chaque caissier
 */
 Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
-    //FIXME comment utiliser poisson pour générer
+    
     _generateur->init();
-    //Poisson *_generateur = new Poisson(tempsMoyenArrivee);
     this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
+    this->_tempsMoyenArrivee = tempsMoyenArrivee;
     this->_dureePrevue = _dureePrevue;
     this->_nbCaissiers = _nbCaissiers;
-    this->_nbClients = 1;
+    this->_nbClients = 0;
 
-    _evenements.push_back(new Arrivee(this->tempsEntreArrivees(), this));
+    double heure = this->_generateur->next(tempsMoyenArrivee);
+
+    _evenements.push_back(new Arrivee(heure, this));
     
-    for (int i = 0; i < tempsService.size(); i++){
+    for (int i = 0; i < (int)tempsService.size(); i++){
         _caissiers.push_back(new Caissier(tempsService[i],this));
     }
 }
@@ -67,7 +69,7 @@ int Banque::nbCaissiers(){
 int Banque::nbClients(){
     this->_nbClients = 0;
 
-    for (int i = 0; i < this->_caissiers.size(); i++){
+    for (int i = 0; i < (int)this->_caissiers.size(); i++){
         this->_nbClients += _caissiers[i]->nbClients();
     }
 
@@ -88,10 +90,13 @@ vector<Evenement*> Banque::evenements(){
  * @return l'index du caissier libre
  */
 Caissier* Banque::premierCaissierLibre(){
-    for (int i = 0; i < this->_caissiers.size() -1 ; i++){
+    int i = 0;
+    Caissier *caissier = _caissiers[i];
+    while (i < (int)this->_caissiers.size() -1 ){
         if (_caissiers[i]->estLibre()){
-            return *(_caissiers[i]);
+            return caissier;
         }
+        i++;
     }
     return NULL;
 }
@@ -108,10 +113,14 @@ FileAttente *Banque::fileAttente(){
  * @brief Méthode pour retourner le temps entre chaque arrivée
  *
  */
-double tpsEntreArrivees(){
-    //FIXME comment utiliser poisson pour générer
-    return _generateur->next(FileAttente::tempsEntreArrivees());
+double Banque::tpsEntreArrivees(){
+    return Poisson::next(tpsEntreArrivees());
 }
+
+Caissier *Banque::caissier(int i){
+    return this->_caissiers[i];
+}
+
 
 /**
 * @brief Destructeur de la classe Banque
@@ -121,7 +130,8 @@ Banque::~Banque(){
     delete _fileAttente;
     delete _generateur;
 
-    for (int i = 0; i < this->_caissiers.size()-1; i++){
+
+    for (int i = 0; i < (int)this->_caissiers.size()-1; i++){
         delete this->_caissiers[i];
     }
     _caissiers.clear();

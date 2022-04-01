@@ -14,18 +14,23 @@
 #define FINSERVICE_H
 
 #include "Evenement.h"
-#include "Client.h"
 #include "Caissier.h"
 #include "Banque.h"
 
-
+/**
+ * @brief Constructeur de la classe FinService
+ * @param heure heure de l'événement
+ * @param banque référence sur la banque
+ */
 class FinService : public Evenement
 {
     public:
-        FinService(double _heure,Client client, Caissier caissier, Banque banque);
-    protected:
-    private:
+        FinService(Caissier* caissier, double _heure, Banque *banque);
         void traiter();
+
+    private:
+        Caissier *caissier;
+        
 
 };
 

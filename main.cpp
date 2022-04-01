@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include <string>
+#include <cstring>
 #include "include/Banque.h"
 
 /**
@@ -16,8 +16,8 @@ using namespace std;
 int main(int argc , char *argv[]){
     int nbCaissiers = 2;
     double dureePrevue = 5;
-    vector<double> tempsService = {1, 1};
-    double tempsMoyenArrivee = 1;
+    vector<double> tempsService;;
+    double tempsEntreArrivees = 1;
 
     for (int i = 1; i < argc; i++)
     {
@@ -34,7 +34,7 @@ int main(int argc , char *argv[]){
             {
                 if (i + j < argc)
                 {
-                    tempsMoyenService.push_back(stod(argv[i + j]));
+                    tempsService.push_back(stod(argv[i + j]));
                 }
                 else
                 {
@@ -43,9 +43,9 @@ int main(int argc , char *argv[]){
                 }
             }
         }
-        else if (strcmp(argv[i], "-ta") == 0) // temps entre arrivée
+        else if (strcmp(argv[i], "-ta") == 0) 
         {
-            tempsMoyenArrivee = stod(argv[i + 1]);
+            tempsEntreArrivees = stod(argv[i + 1]);
         }
     }
 
@@ -55,23 +55,23 @@ int main(int argc , char *argv[]){
      * @param _nbCaissiers le nombre de caissiers dans la banque
      * @param _dureePrevue la durée prévue de la simulation
      * @param tempsService la collection des temps de service de chaque caissier
-     * @param tempsMoyenArrivee le temps moyen d'arrivée d'un client
+     * @param tempsEntreArrivees le temps moyen d'arrivée d'un client
      */
-    Banque banque(nbCaissiers, dureePrevue, tempsService, tempsMoyenArrivee);
+    Banque banque(nbCaissiers, dureePrevue, tempsService, tempsEntreArrivees);
     banque.lancer();
     cout << "Durée réelle de simulation : " << banque.dureeReelle() << endl ;
     cout << "Nombre total de clients servis :" << banque.nbClients() << endl;
     for (int i = 0; i < nbCaissiers; i++)
     {
         cout << "\nCaissier " << i + 1 << " :" << endl;
-        cout << "  Nombre de clients servis : " << banque.caissiers(i)->nbClients() << endl;
-        cout << "  Taux d'occupation : " << banque.caissiers(i)->tauxOccupation() << endl;
-        cout << "  Taux moyen de service : " << banque.caissiers(i)->tempsMoyenService() << endl;
+        cout << "  Nombre de clients servis : " << banque.caissier(i)->nbClients() << endl;
+        cout << "  Taux d'occupation : " << banque.caissier(i)->tauxOccupation() << endl;
+        cout << "  Taux moyen de service : " << banque.caissier(i)->tempsMoyenService() << endl;
     }
     cout << "\nFile d'attente :\n  Longueur moyenne : " << banque.fileAttente()->longueurMoyenne() << endl;
     cout << "  Longueur maximale : " << banque.fileAttente()->longueurMax() << endl;
     cout << "  Temps moyen d'attente : " << banque.fileAttente()->tempsMoyenAttente() << endl;
-}
+
 
     return 0;
 }

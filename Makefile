@@ -12,16 +12,12 @@ OBJ = $(SRC:.cpp=.o)
 
 NAME = simulationBanque
 
-all : compile run #docs
-
-run : 
-	./$(NAME)
-
+all : docs compile  
 
 compile : $(NAME)
 
 $(NAME) : $(OBJ)                                                       
-	g++ -o $(NAME) $(SRC) -W -Wall -Wextra -Werror -g3
+	g++ -o $(NAME) $(SRC) -W -Wall -Wextra -g3
 	rm -f $(OBJ)
 
 clean :
@@ -36,7 +32,7 @@ re : fclean all
 
 $(V).SILENT:
 
-#DOXYFILE = Doxyfile
+DOXYFILE = Doxyfile
 
-#docs :##TODO enlever les ##
-#	doxygen $(DOXYFILE)
+docs :
+	doxygen $(DOXYFILE)

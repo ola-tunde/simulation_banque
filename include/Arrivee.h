@@ -14,6 +14,7 @@
 
 #include "Evenement.h"
 #include "Banque.h"
+#include "Poisson.h"
 
 class Banque;
 class Arrivee : public Evenement
@@ -21,7 +22,7 @@ class Arrivee : public Evenement
     public:
         Arrivee(double _heure, Banque *_banque);
         void traiter();
-    protected:
+    
     private: 
         Banque *_banque;
 };

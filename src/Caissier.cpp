@@ -21,6 +21,7 @@ using namespace std;
  * @param _banque référence sur la banque auquel il appartient
  */
 Caissier::Caissier(double _tempsMoyenService, Banque* banque){
+    _generateur->init(_tempsMoyenService);
     this->banque = banque;
     this->_nbClients = 0;
     this->_estLibre = true;
@@ -86,7 +87,7 @@ void Caissier::servir (Client *c){
 * 
 */ 
 void Caissier::attendre(){
-    if (this->_estLibre == true){
+    while (this->_estLibre == true){
         continue;  
     }
 }

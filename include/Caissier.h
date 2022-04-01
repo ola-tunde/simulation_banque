@@ -16,7 +16,9 @@
 #include "FileAttente.h"
 #include "Client.h"
 #include "FileAttente.h"
+#include "Poisson.h"
 
+class Banque;
 
 class Caissier
 {
@@ -27,7 +29,7 @@ class Caissier
      * @param _tempsMoyenService par simulation de banque
      * @param banque dans laquelle le caissier travaille
      */
-        Caissier(double _tempsMoyenService, Banque *banque);
+    Caissier(double _tempsMoyenService, Banque *banque);
 
     /**
      * @brief Getter du temps moyen de service du caissier
@@ -107,6 +109,7 @@ class Caissier
          * 
          */
         vector<double>_tempsService;
+        Poisson *_generateur;
 };
 
 #endif // CAISSIER_H

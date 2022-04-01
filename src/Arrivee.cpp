@@ -21,11 +21,12 @@ Arrivee::Arrivee(double _heure, Banque *_banque){
 
 void Arrivee::traiter(){
     
-    if (_banque->heure() < _banque->dureePrevue()){
-        double heure = _banque->tempsEntreArrivees() + _heure;
+    double heure = Poisson::next(_banque->tpsEntreArrivees()) + _heure;
+    if (heure < _banque->dureePrevue()){
         _banque->setheure(heure);
         _banque->evenements().push_back(new Arrivee(heure, _banque));
-    }//FIXME régler l'arrivée
+    }
+    
     if (_banque->premierCaissierLibre() != NULL){
         _banque->fileAttente()->ajouter(new Client(_heure));
     }

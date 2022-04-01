@@ -85,6 +85,14 @@ class Banque : public SED
         *
          */
         double tpsEntreArrivees();
+        
+        /**
+         * @brief Méthode pour revoyer le caissier courant
+         * 
+         * @param i 
+         * @return la référence du caissier à l'index @param i 
+         */
+        Caissier *caissier(int i);
 
         /**
          * @brief Destructeur de la classe Banque
@@ -136,6 +144,8 @@ class Banque : public SED
          * 
          */
         Poisson *_generateur;
+
+        double _tempsMoyenArrivee;
 
 
 };

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['caissier_63',['Caissier',['../class_caissier.html',1,'']]],
-  ['client_64',['Client',['../class_client.html',1,'']]]
+  ['caissier_64',['Caissier',['../class_caissier.html',1,'']]],
+  ['client_65',['Client',['../class_client.html',1,'']]]
 ];

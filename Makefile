@@ -36,7 +36,7 @@ re : fclean all
 
 $(V).SILENT:
 
-DOXYFILE = Doxyfile
+#DOXYFILE = Doxyfile
 
-docs :
-	@doxygen $(DOXYFILE)
+#docs :##TODO enlever les ##
+#	doxygen $(DOXYFILE)

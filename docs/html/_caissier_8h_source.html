@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('_caissier_8h_source.html',''); initRes
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_banque_8h.html">Banque.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_file_attente_8h.html">FileAttente.h</a>&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_client_8h.html">Client.h</a>&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_file_attente_8h.html">FileAttente.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_fin_service_8h.html">FinService.h</a>&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_poisson_8h.html">Poisson.h</a>&quot;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">class </span><a class="code" href="class_banque.html">Banque</a>;</div>
@@ -118,30 +118,27 @@ $(document).ready(function(){initNavTree('_caissier_8h_source.html',''); initRes
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="class_banque.html">Banque</a> *banque;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">double</span> _tempsMoyenService;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">int</span> _nbClients;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">int</span> _nbClients;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">double</span> _tauxOccupation;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">bool</span> _estLibre; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        vector&lt;double&gt;_tempsService;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="class_poisson.html">Poisson</a> *_generateur;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif // CAISSIER_H</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">bool</span> _estLibre; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        vector&lt;double&gt;_tempsService;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="class_poisson.html">Poisson</a> *_generateur;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif // CAISSIER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_caissier_html_af1083895cf0987c08f742edc10802aa8"><div class="ttname"><a href="class_caissier.html#af1083895cf0987c08f742edc10802aa8">Caissier::Caissier</a></div><div class="ttdeci">Caissier(double _tempsMoyenService, Banque *banque)</div><div class="ttdoc">Constructeur de la classe Caissier.</div><div class="ttdef"><b>Definition:</b> Caissier.cpp:23</div></div>
 <div class="ttc" id="aclass_caissier_html_a384ef00955e8b89711f5d3fa5a340e1b"><div class="ttname"><a href="class_caissier.html#a384ef00955e8b89711f5d3fa5a340e1b">Caissier::servir</a></div><div class="ttdeci">void servir(Client *c)</div><div class="ttdoc">servir un client</div><div class="ttdef"><b>Definition:</b> Caissier.cpp:78</div></div>
-<div class="ttc" id="aclass_caissier_html_a26abafd5af9831f0dbf18acfde60b4b7"><div class="ttname"><a href="class_caissier.html#a26abafd5af9831f0dbf18acfde60b4b7">Caissier::attendre</a></div><div class="ttdeci">void attendre()</div><div class="ttdoc">attendre un client s'il est libre</div><div class="ttdef"><b>Definition:</b> Caissier.cpp:89</div></div>
+<div class="ttc" id="aclass_caissier_html_a26abafd5af9831f0dbf18acfde60b4b7"><div class="ttname"><a href="class_caissier.html#a26abafd5af9831f0dbf18acfde60b4b7">Caissier::attendre</a></div><div class="ttdeci">void attendre()</div><div class="ttdoc">attendre un client s'il est libre</div><div class="ttdef"><b>Definition:</b> Caissier.cpp:91</div></div>
 <div class="ttc" id="aclass_caissier_html"><div class="ttname"><a href="class_caissier.html">Caissier</a></div><div class="ttdef"><b>Definition:</b> Caissier.h:23</div></div>
 <div class="ttc" id="aclass_caissier_html_a292c60d579915a30b0b9eb55d3df7897"><div class="ttname"><a href="class_caissier.html#a292c60d579915a30b0b9eb55d3df7897">Caissier::tempsMoyenService</a></div><div class="ttdeci">double tempsMoyenService()</div><div class="ttdoc">Getter du temps moyen de service du caissier.</div><div class="ttdef"><b>Definition:</b> Caissier.cpp:35</div></div>
 <div class="ttc" id="a_banque_8h_html"><div class="ttname"><a href="_banque_8h.html">Banque.h</a></div><div class="ttdoc">Classe Banque.</div></div>
 <div class="ttc" id="a_client_8h_html"><div class="ttname"><a href="_client_8h.html">Client.h</a></div><div class="ttdoc">Classe Client.</div></div>
 <div class="ttc" id="aclass_caissier_html_ab04fe3a4443a8e0fba7c211c032ceed0"><div class="ttname"><a href="class_caissier.html#ab04fe3a4443a8e0fba7c211c032ceed0">Caissier::nbClients</a></div><div class="ttdeci">int nbClients()</div><div class="ttdoc">Getter du nombre de clients servi par caissier.</div><div class="ttdef"><b>Definition:</b> Caissier.cpp:43</div></div>
 <div class="ttc" id="a_file_attente_8h_html"><div class="ttname"><a href="_file_attente_8h.html">FileAttente.h</a></div><div class="ttdoc">Classe FileAttente.</div></div>
+<div class="ttc" id="a_fin_service_8h_html"><div class="ttname"><a href="_fin_service_8h.html">FinService.h</a></div><div class="ttdoc">Classe FinService de gestion de fin de service des caissiers.</div></div>
 <div class="ttc" id="a_poisson_8h_html"><div class="ttname"><a href="_poisson_8h.html">Poisson.h</a></div></div>
 <div class="ttc" id="aclass_poisson_html"><div class="ttname"><a href="class_poisson.html">Poisson</a></div><div class="ttdef"><b>Definition:</b> Poisson.h:21</div></div>
 <div class="ttc" id="aclass_client_html"><div class="ttname"><a href="class_client.html">Client</a></div><div class="ttdef"><b>Definition:</b> Client.h:15</div></div>

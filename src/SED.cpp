@@ -35,7 +35,7 @@ void SED::lancer(){
                 Evenement *evenement = this->_evenements[i];
 
                 evenement->traiter();
-                delete evenement;
+                evenement->~Evenement();
                 this->_evenements.erase(this->_evenements.begin() + i);
             }
         }

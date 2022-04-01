@@ -18,6 +18,7 @@ class Evenement
     public:  
         double heure();
         virtual void traiter();
+        virtual ~Evenement();
        
     protected:
         double _heure;

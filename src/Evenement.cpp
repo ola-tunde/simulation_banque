@@ -22,3 +22,5 @@ double Evenement::heure(){
 
 
 void Evenement::traiter(){}
+
+Evenement::~Evenement(){}

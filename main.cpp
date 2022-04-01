@@ -13,8 +13,9 @@
 
 using namespace std;
 
-int main(int argc , char *argv[]){
-    int nbCaissiers = 2;
+int main(int argc , char **argv){
+    int para = 1; 
+    int nbCaissiers = 0;
     double dureePrevue = 5;
     vector<double> tempsService;;
     double tempsEntreArrivees = 1;
@@ -23,14 +24,16 @@ int main(int argc , char *argv[]){
     {
         if (strcmp(argv[i], "-dp") == 0) {
             dureePrevue = stoi(argv[i + 1]);
+            para = para + 2;
         }
         else if (strcmp(argv[i], "-nc") == 0)
         {
             nbCaissiers = stoi(argv[i + 1]);
+            para = para + 2;
         }
         else if (strcmp(argv[i], "-ts") == 0) 
         {
-            for (int j = 0; j < nbCaissiers; j++)
+            for (int j = 1; j < nbCaissiers + 1; j++)
             {
                 if (i + j < argc)
                 {
@@ -38,16 +41,23 @@ int main(int argc , char *argv[]){
                 }
                 else
                 {
-                    cerr << "usage: " << *argv << " [ -dp duree ] [[ -nc nbCaissiers ] -ts temps1...tempsN ] [ -ta tempsArrivees ]\n";
-                    exit(1);
+                    cout << "Paramètre manquant pour le temps de service du caissier " << j << endl;
+                    return 1;
                 }
             }
         }
         else if (strcmp(argv[i], "-ta") == 0) 
         {
             tempsEntreArrivees = stod(argv[i + 1]);
+            para = para + 2;
         }
     }
+    
+    if (para + nbCaissiers + 1 != argc){
+        cerr << "usage: " << *argv << " [ -dp duree ] [ -nc nbCaissiers ] [-ts temps1...tempsN ] [ -ta tempsArrivees ]\n";
+        exit(EXIT_FAILURE);
+    }
+    
 
     /**
      * @brief création de la banque
@@ -57,6 +67,7 @@ int main(int argc , char *argv[]){
      * @param tempsService la collection des temps de service de chaque caissier
      * @param tempsEntreArrivees le temps moyen d'arrivée d'un client
      */
+
     Banque banque(nbCaissiers, dureePrevue, tempsService, tempsEntreArrivees);
     banque.lancer();
     cout << "Durée réelle de simulation : " << banque.dureeReelle() << endl ;

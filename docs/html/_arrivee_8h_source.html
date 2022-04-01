@@ -91,27 +91,30 @@ $(document).ready(function(){initNavTree('_arrivee_8h_source.html',''); initResi
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_evenement_8h.html">Evenement.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_banque_8h.html">Banque.h</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span><a class="code" href="class_banque.html">Banque</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_arrivee.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_arrivee.html">Arrivee</a> : <span class="keyword">public</span> <a class="code" href="class_evenement.html">Evenement</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_arrivee.html#aef694b1c1a8f5ab331ad9cadd9af7805">Arrivee</a>(<span class="keywordtype">double</span> _heure, <a class="code" href="class_banque.html">Banque</a> *_banque);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_arrivee.html#a736bc94f357d2e45b30b9bac19e6d983">traiter</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span>: </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_banque.html">Banque</a> *_banque;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_poisson_8h.html">Poisson.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">class </span><a class="code" href="class_banque.html">Banque</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_arrivee.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_arrivee.html">Arrivee</a> : <span class="keyword">public</span> <a class="code" href="class_evenement.html">Evenement</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_arrivee.html#aef694b1c1a8f5ab331ad9cadd9af7805">Arrivee</a>(<span class="keywordtype">double</span> <a class="code" href="class_evenement.html#a231b1aeb5c1af6a3d71aff3e3145052a">_heure</a>, <a class="code" href="class_banque.html">Banque</a> *_banque);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_arrivee.html#a736bc94f357d2e45b30b9bac19e6d983">traiter</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>: </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_banque.html">Banque</a> *_banque;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif // ARRIVEE_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // ARRIVEE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_arrivee_html_aef694b1c1a8f5ab331ad9cadd9af7805"><div class="ttname"><a href="class_arrivee.html#aef694b1c1a8f5ab331ad9cadd9af7805">Arrivee::Arrivee</a></div><div class="ttdeci">Arrivee(double _heure, Banque *_banque)</div><div class="ttdef"><b>Definition:</b> Arrivee.cpp:17</div></div>
-<div class="ttc" id="aclass_arrivee_html"><div class="ttname"><a href="class_arrivee.html">Arrivee</a></div><div class="ttdef"><b>Definition:</b> Arrivee.h:19</div></div>
+<div class="ttc" id="aclass_arrivee_html"><div class="ttname"><a href="class_arrivee.html">Arrivee</a></div><div class="ttdef"><b>Definition:</b> Arrivee.h:20</div></div>
 <div class="ttc" id="aclass_evenement_html"><div class="ttname"><a href="class_evenement.html">Evenement</a></div><div class="ttdef"><b>Definition:</b> Evenement.h:16</div></div>
 <div class="ttc" id="a_banque_8h_html"><div class="ttname"><a href="_banque_8h.html">Banque.h</a></div><div class="ttdoc">Classe Banque.</div></div>
+<div class="ttc" id="a_poisson_8h_html"><div class="ttname"><a href="_poisson_8h.html">Poisson.h</a></div></div>
 <div class="ttc" id="aclass_arrivee_html_a736bc94f357d2e45b30b9bac19e6d983"><div class="ttname"><a href="class_arrivee.html#a736bc94f357d2e45b30b9bac19e6d983">Arrivee::traiter</a></div><div class="ttdeci">void traiter()</div><div class="ttdef"><b>Definition:</b> Arrivee.cpp:22</div></div>
+<div class="ttc" id="aclass_evenement_html_a231b1aeb5c1af6a3d71aff3e3145052a"><div class="ttname"><a href="class_evenement.html#a231b1aeb5c1af6a3d71aff3e3145052a">Evenement::_heure</a></div><div class="ttdeci">double _heure</div><div class="ttdef"><b>Definition:</b> Evenement.h:23</div></div>
 <div class="ttc" id="aclass_banque_html"><div class="ttname"><a href="class_banque.html">Banque</a></div><div class="ttdef"><b>Definition:</b> Banque.h:27</div></div>
 <div class="ttc" id="a_evenement_8h_html"><div class="ttname"><a href="_evenement_8h.html">Evenement.h</a></div><div class="ttdoc">Classe Evenement abstraite de gestion d'événènements.</div></div>
 <!-- start footer part -->

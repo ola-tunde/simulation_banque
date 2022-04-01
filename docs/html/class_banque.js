@@ -2,6 +2,7 @@ var class_banque =
 [
     [ "Banque", "class_banque.html#a25b0a5eb509fb999b3c24ab54dfa1334", null ],
     [ "~Banque", "class_banque.html#a14aaf09b3db8037f8d0007958fa7def2", null ],
+    [ "caissier", "class_banque.html#ae47a36fff7e54543377263ef081486da", null ],
     [ "dureePrevue", "class_banque.html#ae46944ae8820d68cf66682887994ad28", null ],
     [ "dureeReelle", "class_banque.html#afa3570b2325be3e01d48d8baba190b2d", null ],
     [ "evenements", "class_banque.html#a2f7166020a972cd176621aa8b6017c90", null ],

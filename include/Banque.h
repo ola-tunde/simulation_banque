@@ -30,12 +30,11 @@ class Banque : public SED
         /**
          * @brief Constructeur de la classe Banque
          * 
-         * @param _nbCaissiers le nombre de caissiers dans la banque
          * @param _dureePrevue la durée prévue de la simulation
          * @param vector<double> tempsService la collection des temps de service de chaque caissier
          * @param tempsService le temps de service de chaque caissier
          */
-        Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee);
+        Banque(double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee);
 
         /**
          * @brief Getter de la durée prévue de la simulation
@@ -78,7 +77,7 @@ class Banque : public SED
         * @brief collection de tous les événements de la simulation
         *
         */
-        vector<Evenement*> evenements();
+        vector<Evenement*> &evenements();
         
         /**
         * @brief Méthode pour retourner le temps entre chaque arrivée
@@ -108,18 +107,6 @@ class Banque : public SED
          * 
          */
         double _dureePrevue;
-
-        /**
-         * @brief nombre de caissiers de la banque 
-         * 
-         */
-        int _nbCaissiers;
-
-        /**
-         * @brief durée réelle de la simulation
-         * 
-         */
-        double _dureeReelle;
 
         /**
          * @brief nombre de clients total 

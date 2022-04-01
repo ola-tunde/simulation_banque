@@ -24,7 +24,7 @@ class Arrivee : public Evenement
         void traiter();
     
     private: 
-        Banque *_banque;
+        Banque *banque;
 };
 
 

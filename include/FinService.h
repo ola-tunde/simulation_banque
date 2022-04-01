@@ -15,7 +15,6 @@
 
 #include "Evenement.h"
 #include "Caissier.h"
-#include "Banque.h"
 
 /**
  * @brief Constructeur de la classe FinService
@@ -25,11 +24,12 @@
 class FinService : public Evenement
 {
     public:
-        FinService(Caissier* caissier, double _heure, Banque *banque);
+        FinService(Caissier *caissier, double heure, Client *client);
         void traiter();
 
     private:
-        Caissier *caissier;
+        Caissier *_caissier;
+        Client *_client;
         
 
 };

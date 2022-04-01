@@ -9,7 +9,7 @@
  * 
  */
 
-
+//TODO commentaires doxygen
 #include "../include/Evenement.h"
 
 #include <iostream>
@@ -17,10 +17,9 @@ using namespace std;
 
 
 double Evenement::heure(){
+
     return this->_heure;
 }
 
-
-void Evenement::traiter(){}
 
 Evenement::~Evenement(){}

@@ -14,24 +14,24 @@
 #include <iostream>
 using namespace std;
 
-Arrivee::Arrivee(double _heure, Banque *_banque){
-    _heure =  _heure;
-    _banque = _banque;
+Arrivee::Arrivee(double heure, Banque *_banque){
+    _heure = heure;
+    banque = _banque;
 }
 
 void Arrivee::traiter(){
     
-    double heure = Poisson::next(_banque->tpsEntreArrivees()) + _heure;
-    if (heure < _banque->dureePrevue()){
-        _banque->setheure(heure);
-        _banque->evenements().push_back(new Arrivee(heure, _banque));
+    double heure = Poisson::next(banque->tpsEntreArrivees()) + _heure;
+    if (heure < banque->dureePrevue()){
+        banque->setheure(heure);
+        banque->evenements().push_back(new Arrivee(heure, banque));
     }
     
-    if (_banque->premierCaissierLibre() != NULL){
-        _banque->fileAttente()->ajouter(new Client(_heure));
+    if (banque->premierCaissierLibre() != NULL){
+        banque->fileAttente()->ajouter(new Client(heure));
     }
     else{
-        _banque->premierCaissierLibre()->servir(new Client(_heure));
+        banque->premierCaissierLibre()->servir(new Client(heure));
     }
 }
 

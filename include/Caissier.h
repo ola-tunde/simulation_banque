@@ -15,7 +15,7 @@
 #include "Banque.h"
 #include "FileAttente.h"
 #include "Client.h"
-#include "FileAttente.h"
+#include "FinService.h"
 #include "Poisson.h"
 
 class Banque;
@@ -79,22 +79,10 @@ class Caissier
         Banque *banque;
 
         /**
-         * @brief temps moyen de service du caissier
-         * 
-         */
-        double _tempsMoyenService;
-
-        /**
          * @brief nombre de clients servi par le caissier
          * 
          */
         int _nbClients;
-
-        /**
-         * @brief taux d'occupation du caissier sur l'ensemble de la simulation
-         * 
-         */
-        double _tauxOccupation;
 
         /**
          * @brief temps d'attente du caissier

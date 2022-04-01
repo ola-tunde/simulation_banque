@@ -9,6 +9,7 @@
  * 
  */
 
+//TODO commentaires doxygen
 #include "../include/SED.h"
 
 #include <iostream>
@@ -24,21 +25,23 @@ void SED::ajouter(Evenement *e){
 
 void SED::lancer(){
     while(!this->_evenements.empty()){
-
+        int index = 0;
         double begin = this->_evenements[0]->heure();
         for(int i = 0; i < (int)this->_evenements.size(); i++){
             
             if(this->_evenements[i]->heure() < begin){
                 
                 begin = this->_evenements[i]->heure();
-
-                Evenement *evenement = this->_evenements[i];
-
-                evenement->traiter();
-                evenement->~Evenement();
-                this->_evenements.erase(this->_evenements.begin() + i);
+                index = i;
             }
         }
+        Evenement *evenement = this->_evenements[index];
+
+        evenement->traiter();//FIXME this
+        
+        evenement->~Evenement();
+        this->_evenements.erase(this->_evenements.begin() + index);
+
 
     }
 }

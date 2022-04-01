@@ -19,10 +19,10 @@ using namespace std;
  * @param heure heure de l'événement
  * @param banque référence sur la banque
  */
-FinService::FinService(Caissier* caissier, double heure, Banque *banque){
+FinService::FinService(Caissier *caissier, double heure, Client *client){
     _heure =  heure;
-    banque = banque;
-    caissier = caissier;
+    _client = client;
+    _caissier = caissier;
 }
 
 /**
@@ -32,5 +32,5 @@ FinService::FinService(Caissier* caissier, double heure, Banque *banque){
  * 
  */
 void FinService::traiter(){
-    caissier->estLibre();
+    _caissier->estLibre();
 } 

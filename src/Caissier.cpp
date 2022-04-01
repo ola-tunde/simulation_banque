@@ -76,10 +76,12 @@ bool Caissier::estLibre(){
 *
 */
 void Caissier::servir (Client *c){
-    cout << "Client servi" << endl;
-    delete &c;
-    this->_nbClients++;
+    double heure = Poisson::next();
+    _tempsService.push_back(heure);
     _estLibre = false;
+    this->_nbClients++;
+    banque->evenements().push_back(new FinService(this, heure, c);
+
 } 
 
 /**

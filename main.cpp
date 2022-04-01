@@ -59,17 +59,9 @@ int main(int argc , char **argv){
     }
     
 
-    /**
-     * @brief création de la banque
-     * 
-     * @param _nbCaissiers le nombre de caissiers dans la banque
-     * @param _dureePrevue la durée prévue de la simulation
-     * @param tempsService la collection des temps de service de chaque caissier
-     * @param tempsEntreArrivees le temps moyen d'arrivée d'un client
-     */
-
-    Banque banque(nbCaissiers, dureePrevue, tempsService, tempsEntreArrivees);
+    Banque banque(dureePrevue, tempsService, tempsEntreArrivees);
     banque.lancer();
+    
     cout << "Durée réelle de simulation : " << banque.dureeReelle() << endl ;
     cout << "Nombre total de clients servis :" << banque.nbClients() << endl;
     for (int i = 0; i < nbCaissiers; i++)

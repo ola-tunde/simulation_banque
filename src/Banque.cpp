@@ -20,13 +20,12 @@ using namespace std;
 * @param vector<double> tempsService la collection des temps de service de chaque caissier
 * @param tempsService le temps de service de chaque caissier
 */
-Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
+Banque::Banque(double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
     
     _generateur->init();
     this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
     this->_tempsMoyenArrivee = tempsMoyenArrivee;
     this->_dureePrevue = _dureePrevue;
-    this->_nbCaissiers = _nbCaissiers;
     this->_nbClients = 0;
 
     double heure = this->_generateur->next(tempsMoyenArrivee);
@@ -43,7 +42,7 @@ Banque::Banque(int _nbCaissiers, double _dureePrevue, vector<double> tempsServic
  *
  */
 double Banque::dureePrevue(){
-    return this->_heure;
+    return this->_dureePrevue;
 }
 
 /**
@@ -51,7 +50,7 @@ double Banque::dureePrevue(){
  *
  */
 double Banque::dureeReelle(){
-    return this->_dureeReelle;
+    return this->_heure;
 }
 
 /**
@@ -80,7 +79,7 @@ int Banque::nbClients(){
  * @brief collection de tous les événements de la simulation
  *
  */
-vector<Evenement*> Banque::evenements(){
+vector<Evenement*> &Banque::evenements(){
     return _evenements;   
 }
 
@@ -114,7 +113,7 @@ FileAttente *Banque::fileAttente(){
  *
  */
 double Banque::tpsEntreArrivees(){
-    return Poisson::next(tpsEntreArrivees());
+    return Poisson::next();
 }
 
 Caissier *Banque::caissier(int i){

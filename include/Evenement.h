@@ -17,7 +17,7 @@ class Evenement
 {
     public:  
         double heure();
-        virtual void traiter();
+        virtual void traiter() = 0;
         virtual ~Evenement();
        
     protected:

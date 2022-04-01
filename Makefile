@@ -30,15 +30,13 @@ clean :
 fclean:	clean
 	rm -rf $(NAME)
 	rm -rf *~
-	rm -rf $(DOC_DIR)
+	rm -rf Doc
 
 re : fclean all
 
 $(V).SILENT:
 
 DOXYFILE = Doxyfile
-
-DOC_DIR = Doc/html
 
 docs :
 	doxygen $(DOXYFILE)

@@ -16,6 +16,7 @@
 #include "Evenement.h"
 #include "Caissier.h"
 
+class Caissier;
 /**
  * @brief Constructeur de la classe FinService
  * @param heure heure de l'événement

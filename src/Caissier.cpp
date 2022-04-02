@@ -32,8 +32,9 @@ Caissier::Caissier(double _tempsMoyenService, Banque* banque){
 * @brief Getter du temps moyen de service du caissier
 * 
 */
+//FIXME floating point exception
 double Caissier::tempsMoyenService(){
-    return accumulate(_tempsService.begin(), _tempsService.end(), 0) / _tempsService.size();
+    return accumulate(_tempsService.begin(), _tempsService.end(), decltype(_tempsService)::value_type(0)) / _tempsService.size();
 }
 
 /**
@@ -49,7 +50,7 @@ int Caissier::nbClients(){
 * 
 */
 double Caissier::tauxOccupation(){
-    return accumulate(_tempsService.begin(), _tempsService.end(), 0) / banque->dureeReelle();
+    return accumulate(_tempsService.begin(), _tempsService.end(), decltype(_tempsService)::value_type(0)) / banque->dureeReelle();
 }
 
 /**
@@ -58,15 +59,22 @@ double Caissier::tauxOccupation(){
 * @return true si le caissier est libre
 */
 bool Caissier::estLibre(){
-    if (banque->fileAttente()->estVide()){
+
+    return this->_estLibre; 
+} 
+
+/**
+* @brief attendre un client s'il est libre
+* 
+*/ 
+void Caissier::attendre(){
+   if (banque->fileAttente()->estVide()){
         this->_estLibre = true;
     }
     else{
-        this->_estLibre = false;
         servir(banque->fileAttente()->retirer());
     }
-    return _estLibre;
-} 
+}
 
 //FIXME revoir servir le cient
 /**
@@ -76,22 +84,12 @@ bool Caissier::estLibre(){
 *
 */
 void Caissier::servir (Client *c){
-    double heure = Poisson::next();
+    this->_estLibre = false;
+    double heure = Poisson::next(banque->tpsEntreArrivees());
     _tempsService.push_back(heure);
-    _estLibre = false;
     this->_nbClients++;
 
     banque->evenements().push_back(new FinService(this, heure, c));
     
-
 } 
 
-/**
-* @brief attendre un client s'il est libre
-* 
-*/ 
-void Caissier::attendre(){
-    while (this->_estLibre == true){
-        continue;  
-    }
-}

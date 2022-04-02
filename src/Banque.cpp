@@ -22,7 +22,7 @@ using namespace std;
 */
 Banque::Banque(double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee) {
     
-    _generateur->init();
+    _generateur->init(this->_tempsMoyenArrivee);
     this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
     this->_tempsMoyenArrivee = tempsMoyenArrivee;
     this->_dureePrevue = _dureePrevue;
@@ -32,7 +32,7 @@ Banque::Banque(double _dureePrevue, vector<double> tempsService, double tempsMoy
 
     _evenements.push_back(new Arrivee(heure, this));
     
-    for (int i = 0; i < (int)tempsService.size(); i++){
+    for (size_t i = 0; i < tempsService.size(); i++){
         _caissiers.push_back(new Caissier(tempsService[i],this));
     }
 }
@@ -68,7 +68,7 @@ int Banque::nbCaissiers(){
 int Banque::nbClients(){
     this->_nbClients = 0;
 
-    for (int i = 0; i < (int)this->_caissiers.size(); i++){
+    for (size_t i = 0; i < this->_caissiers.size(); i++){
         this->_nbClients += _caissiers[i]->nbClients();
     }
 
@@ -91,15 +91,35 @@ vector<Evenement *> &Banque::evenements(){
  * @return l'index du caissier libre
  */
 Caissier* Banque::premierCaissierLibre(){
-    int i = 0;
-    Caissier *caissier = _caissiers[i];
-    while (i < (int)this->_caissiers.size() -1 ){
+    size_t i = 0;
+
+    while (i < this->_caissiers.size() ){
+
+        cout << "Caissier " << i << " est libre " << _caissiers[i]->estLibre()<< endl;
+        
         if (_caissiers[i]->estLibre()){
+            cout << "Index : " << i << endl;
+            return _caissiers[i];
+            //return NULL;
+        }
+        i++; 
+
+    }
+    cout << "Aucun caissier n'est libre" << endl;
+    return NULL; 
+
+    /*size_t index = 0;
+    Caissier *caissier;
+    while (index < _caissiers.size())
+    {
+        if (_caissiers.at(index)->estLibre())
+        {
+            caissier = _caissiers.at(index);
             return caissier;
         }
-        i++;
+        index++;
     }
-    return NULL;
+    return NULL;*/
 }
 
 /**
@@ -129,10 +149,8 @@ Caissier *Banque::caissier(int i){
 */
 Banque::~Banque(){
     delete _fileAttente;
-    delete _generateur;
 
-
-    for (int i = 0; i < (int)this->_caissiers.size()-1; i++){
+    for (size_t i = 0; i < this->_caissiers.size()-1; i++){
         delete this->_caissiers[i];
     }
     _caissiers.clear();

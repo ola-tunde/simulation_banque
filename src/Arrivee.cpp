@@ -21,17 +21,18 @@ Arrivee::Arrivee(double heure, Banque *_banque){
 
 void Arrivee::traiter(){
     
-    double heure = Poisson::next(banque->tpsEntreArrivees()) + _heure;
-    if (heure < banque->dureePrevue()){
+    if (banque->heure() < banque->dureePrevue()){
+        double heure = banque->tpsEntreArrivees() + _heure;
         banque->setheure(heure);
         banque->evenements().push_back(new Arrivee(heure, banque));
     }
     
-    if (banque->premierCaissierLibre() != NULL){
-        banque->fileAttente()->ajouter(new Client(heure));
+    if (banque->premierCaissierLibre() == NULL){
+
+        banque->fileAttente()->ajouter(new Client(_heure));
     }
     else{
-        banque->premierCaissierLibre()->servir(new Client(heure));
+        banque->premierCaissierLibre()->servir(new Client(_heure));
     }
 }
 

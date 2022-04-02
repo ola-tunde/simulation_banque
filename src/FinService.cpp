@@ -33,5 +33,6 @@ FinService::FinService(Caissier *caissier, double heure, Client *client){
  */
 void FinService::traiter(){
     delete _client;
-    _caissier->estLibre();
+    _caissier->attendre();
+  // _caissier->estLibre();
 } 

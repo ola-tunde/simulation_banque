@@ -49,7 +49,7 @@ double FileAttente::longueurMoyenne(){
  *
  */
 double FileAttente::tempsMoyenAttente(){
-    return accumulate(_tempsAttente.begin(), _tempsAttente.end(), 0) / _tempsAttente.size();
+    return accumulate(_tempsAttente.begin(), _tempsAttente.end(),  decltype(_tempsAttente)::value_type(0)) / _tempsAttente.size();
 }
 
 /**
@@ -68,7 +68,7 @@ double FileAttente::tempsEntreArrivees(){
 void FileAttente::ajouter(Client *c){
     _aire += (_banque->heure() - _last) * _clients.size();
     this->_clients.push_back(c);
-
+    _last = _banque->heure();
     if (this->_clients.size() > this->_longueurMax)
     {
         this->_longueurMax = this->_clients.size();

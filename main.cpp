@@ -69,11 +69,11 @@ int main(int argc , char **argv){
         cout << "\nCaissier " << i + 1 << " :" << endl;
         cout << "  Nombre de clients servis : " << banque.caissier(i)->nbClients() << endl;
         cout << "  Taux d'occupation : " << banque.caissier(i)->tauxOccupation() << endl;
-        cout << "  Taux moyen de service : " << banque.caissier(i)->tempsMoyenService() << endl;
+        cout << "  Temps moyen de service : " << banque.caissier(i)->tempsMoyenService() << endl;
     }
-    cout << "\nFile d'attente :\n  Longueur moyenne : " << banque.fileAttente()->longueurMoyenne() << endl;
-    cout << "  Longueur maximale : " << banque.fileAttente()->longueurMax() << endl;
-    cout << "  Temps moyen d'attente : " << banque.fileAttente()->tempsMoyenAttente() << endl;
+    cout << "\nFile d'attente :\n  Longueur moyenne : " << banque.fileAttente()->longueurMoyenne() << endl;//FIXME revoir le calcul de la longueur moyenne
+    cout << "  Longueur maximale : " << banque.fileAttente()->longueurMax() << endl; //FIXME revoir le calcul de la longueur maximale
+    cout << "  Temps moyen d'attente : " << banque.fileAttente()->tempsMoyenAttente() << endl;  //FIXME revoir le calcul du temps moyen d'attente
 
 
     return 0;

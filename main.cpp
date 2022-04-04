@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstring>
 #include "include/Banque.h"
@@ -29,7 +28,7 @@ int main(int argc , char **argv){
         else if (strcmp(argv[i], "-nc") == 0)
         {
             nbCaissiers = stoi(argv[i + 1]);
-            para = para + 2;
+            para = para + 2; 
         }
         else if (strcmp(argv[i], "-ts") == 0) 
         {

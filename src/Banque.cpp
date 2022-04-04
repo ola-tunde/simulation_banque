@@ -95,10 +95,10 @@ Caissier* Banque::premierCaissierLibre(){
 
     while (i < this->_caissiers.size() ){
 
-        cout << "Caissier " << i << " est libre " << _caissiers[i]->estLibre()<< endl;
+        //cout << "Caissier " << i << " est libre " << _caissiers[i]->estLibre()<< endl;
         
         if (_caissiers[i]->estLibre()){
-            cout << "Index : " << i << endl;
+            //cout << "Index : " << i << endl;
             return _caissiers[i];
             //return NULL;
         }

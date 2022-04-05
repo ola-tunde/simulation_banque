@@ -24,3 +24,15 @@ On souhaite obtenir, à la fin de la simulation, les résultats suivants :
 * Les caissiers ne sont jamais fatigués : dès la fin de traitement d’un client, le caissier en reprend un si la file n’est pas vide.
 * On dispose d’un générateur aléatoire permettant de déterminer les arrivées de clients et les temps de service effectifs des caissiers.
 * La simulation repose sur la succession d’évènements discrets: on suppose qu’entre deux évènenements consécutifs, il ne se passe rien de marquant dans le système, donc le temps varie de manière discrète.
+
+
+## Compilation 
+`make` pour compiler tout le projet
+### Options de compilation
+* `all` pour compiler tout
+* `clean` pour nettoyer les fichiers objets
+* `fclean` pour nettoyer les fichiers objets, l'exécutable et la documentation Doxygen
+* `docs` pour générer la documentation Doxygen
+
+## Exécuter la simulation
+`./simulationBanque -dp[durée prévue de la simulation] -nc [nombre de caissiers] -ts [tempsCaissier1 ... tempsCaissierN] -ta [temps d'arrivée des clients]` pour lancer la simulation

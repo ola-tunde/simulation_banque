@@ -12,7 +12,7 @@ OBJ = $(SRC:.cpp=.o)
 
 NAME = simulationBanque
 
-all : docs compile  
+all : compile
 
 compile : $(NAME)
 

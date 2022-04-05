@@ -4,100 +4,110 @@
  * @brief Classe Caissier
  * @version 0.1
  * @date 2022-03-30
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #ifndef CAISSIER_H
 #define CAISSIER_H
 
 #include "Banque.h"
-#include "FileAttente.h"
 #include "Client.h"
+#include "FileAttente.h"
 #include "FinService.h"
 #include "Poisson.h"
 
 class Banque;
 
-class Caissier
-{
-    public:
+class Caissier {
+  public:
     /**
      * @brief Constructeur de la classe Caissier
-     * 
-     * @param _tempsMoyenService par simulation de banque
+     *
+     * @param tempsMoyenService par simulation de banque
      * @param banque dans laquelle le caissier travaille
      */
-    Caissier(double _tempsMoyenService, Banque *banque);
+    Caissier(double tempsMoyenService, Banque* banque);
 
     /**
      * @brief Getter du temps moyen de service du caissier
-     * 
+     *
      */
-        double tempsMoyenService();
+    double tempsMoyenService();
 
-        /**
-         * @brief Getter du nombre de clients servi par caissier 
-         * 
-         */
-        int nbClients();
-        
-        /**
-         * @brief Getter du taux d'occupation de chaque caissier
-         * 
-         */
-        double tauxOccupation();
+    /**
+     * @brief Getter du nombre de clients servi par caissier
+     *
+     */
+    int nbClients();
 
-        /**
-         * @brief vérifie si le caissier est libre
-         * 
-         * @return true si le caissier est libre
-         */
-        bool estLibre();
+    /**
+     * @brief Getter du taux d'occupation de chaque caissier
+     *
+     */
+    double tauxOccupation();
 
-        /**
-         * @brief servir un client
-         * 
-         * @param c la référence sur le client à servir
-         *
-         */
-        void servir(Client *c);
+    /**
+     * @brief vérifie si le caissier est libre
+     *
+     * @return true si le caissier est libre
+     */
+    bool estLibre();
 
-        /**
-         * @brief attendre un client s'il est libre
-         * 
-         */
-        void attendre();
+    /**
+     * @brief servir un client
+     *
+     * @param c la référence sur le client à servir
+     *
+     */
+    void servir(Client* c);
 
-    protected:
-    private:
-        /**
-         * @brief référence sur la banque du caissier
-         * 
-         */
-        Banque *banque;
+    /**
+     * @brief attendre un client s'il est libre
+     *
+     */
+    void attendre();
 
-        /**
-         * @brief nombre de clients servi par le caissier
-         * 
-         */
-        int _nbClients;
+  protected:
+  private:
+    /**
+     * @brief référence sur la banque du caissier
+     *
+     */
+    Banque* banque;
 
-        /**
-         * @brief temps d'attente du caissier
-         * 
-         * @return true si le caissier est libre
-         *
-         */
-        bool _estLibre; 
+    /**
+     * @brief nombre de clients servi par le caissier
+     *
+     */
+    int _nbClients;
 
-        /**
-         * @brief collection de ses temps de service
-         * 
-         */
-        vector<double>_tempsService;
-        Poisson *_generateur;
+    /**
+     * @brief temps d'attente du caissier
+     *
+     * @return true si le caissier est libre
+     *
+     */
+    bool _estLibre;
+
+    /**
+     * @brief collection de ses temps de service
+     *
+     */
+    vector<double> _tempsMoyenService;
+
+    /**
+     * @brief générateur de nombre aléatoire
+     *
+     */
+    Poisson* _generateur;
+
+    /**
+     * @brief temps de service en entrée
+     *
+     */
+    double _tempsService;
 };
 
 #endif // CAISSIER_H

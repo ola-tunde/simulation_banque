@@ -4,138 +4,140 @@
  * @brief Classe Banque
  * @version 0.1
  * @date 2022-03-30
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 #ifndef BANQUE_H
 #define BANQUE_H
 
 #include <vector>
 
-#include "Caissier.h"
-#include "FileAttente.h"
-#include "Evenement.h"
 #include "Arrivee.h"
-#include "SED.h"
+#include "Caissier.h"
+#include "Evenement.h"
+#include "FileAttente.h"
 #include "Poisson.h"
-
+#include "SED.h"
 
 using namespace std;
 class FileAttente;
 class Caissier;
-class Banque : public SED
-{
-    public:
-        /**
-         * @brief Constructeur de la classe Banque
-         * 
-         * @param _dureePrevue la durée prévue de la simulation
-         * @param vector<double> tempsService la collection des temps de service de chaque caissier
-         * @param tempsService le temps de service de chaque caissier
-         */
-        Banque(double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee);
+class Banque : public SED {
+  public:
+    /**
+     * @brief Constructeur de la classe Banque
+     *
+     * @param _dureePrevue la durée prévue de la simulation
+     * @param vector<double> tempsService la collection des temps de service de
+     * chaque caissier
+     * @param tempsService le temps de service de chaque caissier
+     */
+    Banque(double _dureePrevue, vector<double> tempsService,
+           double tempsMoyenArrivee);
 
-        /**
-         * @brief Getter de la durée prévue de la simulation
-         *  
-         */
-        double dureePrevue();
+    /**
+     * @brief Getter de la durée prévue de la simulation
+     *
+     */
+    double dureePrevue();
 
-        /**
-         * @brief Getter du nombre de caissiers dans la banque
-         * 
-         */
-        int nbCaissiers();
+    /**
+     * @brief Getter de la durée prévue de la simulation
+     *
+     */
+    void lancer();
 
-        /**
-         * @brief Getter de la durée réelle de la simulation
-         * 
-         */
-        double dureeReelle();
+    /**
+     * @brief Getter du nombre de caissiers dans la banque
+     *
+     */
+    int nbCaissiers();
 
-        /**
-         * @brief Getter du nombre de clients total 
-         * 
-         */
-        int nbClients();
+    /**
+     * @brief Getter de la durée réelle de la simulation
+     *
+     */
+    double dureeReelle();
 
-        
-        /**
-         * @brief Méthode pour retourner la référence du premier caissier libre par ordre croissant
-         * 
-         */
-        Caissier* premierCaissierLibre();
+    /**
+     * @brief Getter du nombre de clients total
+     *
+     */
+    int nbClients();
 
-        /**
-         * @brief Méthode pour retourner la référence de la file d'attente
-         * 
-         */
-        FileAttente *fileAttente();
+    /**
+     * @brief Méthode pour retourner la référence du premier caissier libre par
+     * ordre croissant
+     *
+     */
+    Caissier* premierCaissierLibre();
 
-        /**
-        * @brief collection de tous les événements de la simulation
-        *
-        */
-        vector<Evenement*> &evenements();
-        
-        /**
-        * @brief Méthode pour retourner le temps entre chaque arrivée
-        *
-         */
-        double tpsEntreArrivees();
-        
-        /**
-         * @brief Méthode pour revoyer le caissier courant
-         * 
-         * @param i 
-         * @return la référence du caissier à l'index @param i 
-         */
-        Caissier *caissier(int i);
+    /**
+     * @brief Méthode pour retourner la référence de la file d'attente
+     *
+     */
+    FileAttente* fileAttente();
 
-        /**
-         * @brief Destructeur de la classe Banque
-         * 
-         */
-        ~Banque();
+    /**
+     * @brief collection de tous les événements de la simulation
+     *
+     */
+    vector<Evenement*>& evenements();
 
-    protected:
+    /**
+     * @brief Méthode pour retourner le temps entre chaque arrivée
+     *
+     */
+    double prochainDelaiArrivee();
 
-    private:
-        /**
-         * @brief durée prévue de la simulation
-         * 
-         */
-        double _dureePrevue;
+    /**
+     * @brief Méthode pour revoyer le caissier courant
+     *
+     * @param i
+     * @return la référence du caissier à l'index @param i
+     */
+    Caissier* caissier(int i);
 
-        /**
-         * @brief nombre de clients total 
-         * 
-         */
-        int _nbClients;
+    /**
+     * @brief Destructeur de la classe Banque
+     *
+     */
+    ~Banque();
 
-        /**
-         * @brief ensemble de caissiers dans la banque
-         * 
-         */
-        vector<Caissier *> _caissiers;
+  protected:
+  private:
+    /**
+     * @brief durée prévue de la simulation
+     *
+     */
+    double _dureePrevue;
 
-        /**
-         * @brief file d'attente de la banque
-         * 
-         */
-        FileAttente *_fileAttente;
+    /**
+     * @brief nombre de clients total
+     *
+     */
+    int _nbClients;
 
-        /**
-         * @brief générateur de nombres aléatoires
-         * 
-         */
-        Poisson *_generateur;
+    /**
+     * @brief ensemble de caissiers dans la banque
+     *
+     */
+    vector<Caissier*> _caissiers;
 
-        double _tempsMoyenArrivee;
+    /**
+     * @brief file d'attente de la banque
+     *
+     */
+    FileAttente* _fileAttente;
 
+    /**
+     * @brief générateur de nombres aléatoires
+     *
+     */
+    Poisson* _generateur;
 
+    double _tempsMoyenArrivee;
 };
-
 
 #endif // BANQUE_H

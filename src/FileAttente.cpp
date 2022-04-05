@@ -20,7 +20,7 @@ using namespace std;
  * @param _tempsEntreArrivee qui automatise l'arrivée des clients
  */
 
-FileAttente::FileAttente(double _tempsEntreArrivees, Banque *_banque){
+FileAttente::FileAttente(double _tempsEntreArrivees, Banque* _banque) {
     this->_longueurMax = 0;
     this->_longueurMoyenne = 0;
     this->_aire = 0;
@@ -32,62 +32,59 @@ FileAttente::FileAttente(double _tempsEntreArrivees, Banque *_banque){
  * @brief Getter de la longueur Max de la file d'attente
  *
  */
-unsigned int FileAttente::longueurMax(){
-    return this->_longueurMax;
-}
+unsigned int FileAttente::longueurMax() { return this->_longueurMax; }
 
 /**
  * @brief Getter de la longueur moyenne de la file d'attente
  *
  */
-double FileAttente::longueurMoyenne(){
-    return _aire / _banque->heure();
-}
+double FileAttente::longueurMoyenne() { return _aire / _banque->heure(); }
 
 /**
  * @brief Getter du temps moyen d'attente dans la file d'attente
  *
  */
-double FileAttente::tempsMoyenAttente(){
-    return accumulate(_tempsAttente.begin(), _tempsAttente.end(),  decltype(_tempsAttente)::value_type(0)) / _tempsAttente.size();
+double FileAttente::tempsMoyenAttente() {
+    return accumulate(_tempsAttente.begin(), _tempsAttente.end(),
+                      decltype(_tempsAttente)::value_type(0)) /
+           _tempsAttente.size();
 }
 
 /**
  * @brief Getter du temps entre les arrivées dans la file d'attente
  *
  */
-double FileAttente::tempsEntreArrivees(){
-    return this->_tempsEntreArrivees;
-}
+double FileAttente::tempsEntreArrivees() { return this->_tempsEntreArrivees; }
 
 /**
  * @brief Méthode pour ajouter un client dans la file d'attente
  *
  * @param c Client à ajouter
  */
-void FileAttente::ajouter(Client *c){
-    _aire += (_banque->heure() - _last) * _clients.size();
+void FileAttente::ajouter(Client* c) {
+    _aire += (_banque->heure() - this->_last) * _clients.size();
     this->_clients.push_back(c);
     _last = _banque->heure();
-    if (this->_clients.size() > this->_longueurMax)
-    {
+    if (this->_clients.size() > this->_longueurMax) {
         this->_longueurMax = this->_clients.size();
     }
 }
 
 /**
  * @brief Méthode pour retirer un client de la file d'attente
- * @details On retire le premier client de la file d'attente et on calcule le temps moyen d'attente
+ * @details On retire le premier client de la file d'attente et on calcule le
+ * temps moyen d'attente
  */
-Client* FileAttente::retirer(){
+Client* FileAttente::retirer() {
     this->_aire += (_banque->heure() - this->_last) * _clients.size();
+
     this->_last = _banque->heure();
-    
-    Client *c = this->_clients.front();
+
+    Client* c = this->_clients.front();
     this->_tempsAttente.push_back(_banque->heure() - c->heureArrivee());
 
     this->_clients.erase(this->_clients.begin());
-    
+
     return c;
 }
 
@@ -95,6 +92,4 @@ Client* FileAttente::retirer(){
  * @brief Méthode pour vérifier si la file d'attente est vide
  *
  */
-bool FileAttente::estVide(){
-    return this->_clients.empty();
-}
+bool FileAttente::estVide() { return this->_clients.empty(); }

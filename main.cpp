@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
+=======
+#include <iostream>
+#include <cstring>
+>>>>>>> 8c49c7ab8ee1d8ebb82f71fc22757d17256bf057
 #include "include/Banque.h"
 #include <cstring>
 #include <iostream>
@@ -26,10 +31,21 @@ int main(int argc, char** argv) {
             para = para + 2;
         } else if (strcmp(argv[i], "-nc") == 0) {
             nbCaissiers = stoi(argv[i + 1]);
+<<<<<<< HEAD
             para = para + 2;
         } else if (strcmp(argv[i], "-ts") == 0) {
             for (int j = 1; j < nbCaissiers + 1; j++) {
                 if (i + j < argc) {
+=======
+            para = para + 2; 
+        }
+        else if (strcmp(argv[i], "-ts") == 0) 
+        {
+            for (int j = 1; j < nbCaissiers + 1; j++)
+            {
+                if (i + j < argc)
+                {
+>>>>>>> 8c49c7ab8ee1d8ebb82f71fc22757d17256bf057
                     tempsService.push_back(stod(argv[i + j]));
                 } else {
                     cout << "Paramètre manquant pour le temps de service du caissier " << j << endl;

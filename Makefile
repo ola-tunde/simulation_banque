@@ -14,9 +14,7 @@ NAME = simulationBanque
 
 all : compile
 
-compile : $(NAME)
-
-$(NAME) : $(OBJ)                                                       
+compile : $(OBJ)                                                       
 	g++ -o $(NAME) $(SRC) -W -Wall -Wextra -g3
 	rm -f $(OBJ)
 

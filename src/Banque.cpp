@@ -86,8 +86,17 @@ vector<Evenement*>& Banque::evenements() { return _evenements; }
 Caissier* Banque::premierCaissierLibre() {
     size_t i = 0;
 
+<<<<<<< HEAD
     while (i < this->_caissiers.size()) {
         if (_caissiers[i]->estLibre()) {
+=======
+    while (i < this->_caissiers.size() ){
+
+        //cout << "Caissier " << i << " est libre " << _caissiers[i]->estLibre()<< endl;
+        
+        if (_caissiers[i]->estLibre()){
+            //cout << "Index : " << i << endl;
+>>>>>>> 8c49c7ab8ee1d8ebb82f71fc22757d17256bf057
             return _caissiers[i];
         }
         i++;

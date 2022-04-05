@@ -26,7 +26,7 @@ On souhaite obtenir, à la fin de la simulation, les résultats suivants :
 * La simulation repose sur la succession d’évènements discrets: on suppose qu’entre deux évènenements consécutifs, il ne se passe rien de marquant dans le système, donc le temps varie de manière discrète.
 
 
-## Compilation 
+## Compilation de la simulation
 `make` pour compiler tout le projet
 #### Options de compilation
 * `all` pour compiler tout
@@ -34,5 +34,5 @@ On souhaite obtenir, à la fin de la simulation, les résultats suivants :
 * `fclean` pour nettoyer les fichiers objets, l'exécutable et la documentation Doxygen
 * `docs` pour générer la documentation Doxygen
 
-## Exécuter la simulation
+## Exécution la simulation
 `./simulationBanque -dp[durée prévue de la simulation] -nc [nombre de caissiers] -ts [tempsCaissier1 ... tempsCaissierN] -ta [temps d'arrivée des clients]` 

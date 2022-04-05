@@ -19,14 +19,41 @@
 using namespace std;
 class SED {
   public:
+    /**
+    * @brief Constructeur de la classe SED
+    */
     SED();
 
+    /**
+     * @brief Méthode d'ajout d'évènement
+     * 
+     * @param e 
+     */
     void ajouter(Evenement* e);
+
+    /**
+     * @brief Méthode de traitement d'évènement discrets
+     * 
+     */
     void lancer();
+
+    /**
+     * @brief Méthode de récupération de l'heure courante
+     * 
+     */
     double heure();
 
   protected:
+  /**
+   * @brief collection d'évènements
+   * 
+   */
     vector<Evenement*> _evenements;
+
+    /**
+     * @brief heure courante
+     * 
+     */
     double _heure;
 
   private:

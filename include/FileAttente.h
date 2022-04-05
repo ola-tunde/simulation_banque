@@ -116,7 +116,7 @@ class FileAttente
         vector<Client*> _clients; 
 
         /**
-         * @brief pointeur sur le dernier temps d'arrivée
+         * @brief dernier temps d'arrivée
          * 
          */
         double _last;

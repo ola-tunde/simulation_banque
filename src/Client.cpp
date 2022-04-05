@@ -19,7 +19,9 @@ using namespace std;
  * @param _tempsArrivee qui identifie chaque client
  */
 Client::Client(double _heureArrivee){
+
     this->_heureArrivee = _heureArrivee;
+
 }
 
 /**
@@ -27,12 +29,13 @@ Client::Client(double _heureArrivee){
  *
  */
 double Client::heureArrivee(){
+
     return this->_heureArrivee;
+
 }
 
 /**
  * @brief Destructeur de la classe Client
  *
  */
-Client::~Client(){
-}
+Client::~Client(){}

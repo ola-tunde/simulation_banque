@@ -33,8 +33,7 @@ class Banque : public SED {
      * chaque caissier
      * @param tempsService le temps de service de chaque caissier
      */
-    Banque(double _dureePrevue, vector<double> tempsService,
-           double tempsMoyenArrivee);
+    Banque(double _dureePrevue, vector<double> tempsService, double tempsMoyenArrivee);
 
     /**
      * @brief Getter de la durée prévue de la simulation
@@ -43,7 +42,7 @@ class Banque : public SED {
     double dureePrevue();
 
     /**
-     * @brief Getter de la durée prévue de la simulation
+     * @brief Méthode pour la simulation de banque 
      *
      */
     void lancer();
@@ -137,6 +136,10 @@ class Banque : public SED {
      */
     Poisson* _generateur;
 
+    /**
+     * @brief temps d'arrivée du prochain client
+     *
+     */
     double _tempsMoyenArrivee;
 };
 

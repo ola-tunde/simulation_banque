@@ -17,12 +17,10 @@ using namespace std;
  *
  * @param _nbCaissiers le nombre de caissiers dans la banque
  * @param _dureePrevue la durée prévue de la simulation
- * @param vector<double> tempsService la collection des temps de service de
- * chaque caissier
+ * @param vector<double> tempsService la collection des temps de service de chaque caissier
  * @param tempsService le temps de service de chaque caissier
  */
-Banque::Banque(double _dureePrevue, vector<double> tempsService,
-               double tempsMoyenArrivee) {
+Banque::Banque(double _dureePrevue, vector<double> tempsService,double tempsMoyenArrivee) {
 
     _generateur->init(this->_tempsMoyenArrivee);
     this->_fileAttente = new FileAttente(tempsMoyenArrivee, this);
@@ -41,19 +39,31 @@ Banque::Banque(double _dureePrevue, vector<double> tempsService,
  * @brief Getter de la durée prévue de la simulation
  *
  */
-double Banque::dureePrevue() { return this->_dureePrevue; }
+double Banque::dureePrevue() { 
+    
+    return this->_dureePrevue; 
+    
+}
 
 /**
  * @brief Getter de la durée réelle de la simulation
  *
  */
-double Banque::dureeReelle() { return this->_heure; }
+double Banque::dureeReelle() { 
+    
+    return this->_heure; 
+
+}
 
 /**
  * @brief Getter du nombre de caissiers dans la banque
  *
  */
-int Banque::nbCaissiers() { return this->_caissiers.size(); }
+int Banque::nbCaissiers() { 
+    
+    return this->_caissiers.size(); 
+
+}
 
 /**
  * @brief Getter pour retourner les objets de la classe Caissier
@@ -75,7 +85,10 @@ int Banque::nbClients() {
  * @return vector<Evenement*>
  *
  */
-vector<Evenement*>& Banque::evenements() { return _evenements; }
+vector<Evenement*>& Banque::evenements() { 
+    
+    return _evenements; 
+}
 
 /**
  * @brief Méthode pour retourner le premier caissier libre dans la file
@@ -86,17 +99,8 @@ vector<Evenement*>& Banque::evenements() { return _evenements; }
 Caissier* Banque::premierCaissierLibre() {
     size_t i = 0;
 
-<<<<<<< HEAD
     while (i < this->_caissiers.size()) {
         if (_caissiers[i]->estLibre()) {
-=======
-    while (i < this->_caissiers.size() ){
-
-        //cout << "Caissier " << i << " est libre " << _caissiers[i]->estLibre()<< endl;
-        
-        if (_caissiers[i]->estLibre()){
-            //cout << "Index : " << i << endl;
->>>>>>> 8c49c7ab8ee1d8ebb82f71fc22757d17256bf057
             return _caissiers[i];
         }
         i++;
@@ -108,24 +112,34 @@ Caissier* Banque::premierCaissierLibre() {
  * @brief Méthode pour retourner la référence de la file d'attente
  *
  */
-FileAttente* Banque::fileAttente() { return this->_fileAttente; }
+FileAttente* Banque::fileAttente() { 
+    
+    return this->_fileAttente;
+
+}
 
 /**
  * @brief Méthode pour retourner le temps entre chaque arrivée
  *
  */
 double Banque::prochainDelaiArrivee() {
-    // double next =
-    //     this->_generateur->next(this->fileAttente()->tempsEntreArrivees());
-
-    // this->_heure += next;
 
     this->_generateur->init(this->_tempsMoyenArrivee);
 
     return this->_generateur->next(this->fileAttente()->tempsEntreArrivees());
 }
 
-Caissier* Banque::caissier(int i) { return this->_caissiers[i]; }
+/**
+* @brief Méthode pour revoyer le caissier courant
+*
+* @param i
+* @return la référence du caissier à l'index @param i
+*/
+Caissier* Banque::caissier(int i) { 
+    
+    return this->_caissiers[i]; 
+    
+}
 
 /**
  * @brief Destructeur de la classe Banque
@@ -140,6 +154,11 @@ Banque::~Banque() {
     _caissiers.clear();
 }
 
+
+/**
+* @brief Méthode pour la simulation de banque 
+*
+*/
 void Banque::lancer() {
 
     while (!this->_evenements.empty()) {

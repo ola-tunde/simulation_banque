@@ -12,10 +12,10 @@ OBJ = $(SRC:.cpp=.o)
 
 NAME = simulationBanque
 
-all : compile
+all : docs compile
 
 compile : $(OBJ)                                                       
-	g++ -o $(NAME) $(SRC) -W -Wall -Wextra -g3
+	g++ -o $(NAME) $(SRC) -W -Wall -Werror -Wextra -g3
 	rm -f $(OBJ)
 
 clean :

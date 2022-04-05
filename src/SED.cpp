@@ -9,26 +9,40 @@
  *
  */
 
-// TODO commentaires doxygen
+
 #include "../include/SED.h"
 
 #include <iostream>
 using namespace std;
 
-SED::SED() { this->_heure = 0.0; }
+SED::SED() { 
+    
+    this->_heure = 0.0; 
 
-void SED::ajouter(Evenement* e) { this->_evenements.push_back(e); }
+}
 
+/**
+* @brief Méthode d'ajout d'évènement
+* 
+* @param e 
+*/
+void SED::ajouter(Evenement* e) { 
+    
+    this->_evenements.push_back(e); 
+    
+}
+
+/**
+* @brief Méthode de traitement d'évènement discrets
+* 
+*/
 void SED::lancer() {
-
-    // this->_evenements.push_back(new Arrivee(this->prochainDelaiArrivee(),
-    // this));
 
     while (!this->_evenements.empty()) {
         int index = 0;
         double debut = this->_evenements[0]->heure();
 
-        for (size_t i = 0; i < this->_evenements.size(); i++) { // a1,s2
+        for (size_t i = 0; i < this->_evenements.size(); i++) { 
             if (debut > this->_evenements[i]->heure()) {
                 debut = this->_evenements[i]->heure();
                 index = i;
@@ -44,4 +58,12 @@ void SED::lancer() {
     }
 }
 
-double SED::heure() { return this->_heure; }
+/**
+* @brief Méthode de récupération de l'heure courante
+* 
+*/
+double SED::heure() { 
+    
+    return this->_heure; 
+
+}

@@ -16,8 +16,22 @@
 class Evenement
 {
     public:  
+        /**
+         * @brief méthode pour récupérer l'heure de l'événement
+         * 
+         */
         double heure();
-        virtual void traiter() = 0;
+        
+        /**
+         * @brief méthode traiter virtuellement l'événement
+         * 
+         */
+        virtual void traiter() = 0; //TODO revoir pourquoi
+
+        /**
+         * @brief Destructeur de la classe Evenement
+         * 
+         */
         virtual ~Evenement();
        
     protected:

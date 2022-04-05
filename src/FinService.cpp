@@ -33,5 +33,4 @@ void FinService::traiter() {
     delete _client;
     _caissier->attendre();
 
-    // _caissier->estLibre();
 }

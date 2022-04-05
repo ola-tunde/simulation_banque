@@ -17,18 +17,25 @@
 #include "Caissier.h"
 
 class Caissier;
-/**
- * @brief Constructeur de la classe FinService
- * @param heure heure de l'événement
- * @param banque référence sur la banque
- */
 class FinService : public Evenement
 {
     public:
-        FinService(Caissier *caissier, double heure, Client *client);
-        void traiter();
+    /**
+    * @brief Constructeur de la classe FinService
+    * @param heure heure de l'événement
+    * @param banque référence sur la banque
+    */
+    FinService(Caissier *caissier, double heure, Client *client);
+    
+    /** 
+     * @brief Méthode qui permet de traiter la fin de service d'un caissier
+     * 
+     * @details Rend le caissier libre
+     */
+    void traiter();
 
     private:
+    
         Caissier* _caissier;
         Client* _client;
         

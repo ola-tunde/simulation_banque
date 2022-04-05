@@ -13,23 +13,29 @@
 
 #include <iostream>
 using namespace std;
-
+/**
+* @brief Constructeur de la classe Arrivee
+*
+* @param heure l'heure de l'arrivée du client
+* @param banque la banque
+*/
 Arrivee::Arrivee(double heure, Banque* banque) {
     _heure = heure;
     _banque = banque;
 }
 
-void Arrivee::traiter() { // *c1, c2
+/** 
+* @brief Méthode qui permet de traiter l'arrivée d'un client
+* 
+*/
+void Arrivee::traiter() { 
 
-    Caissier* caissier =
-        this->_banque->premierCaissierLibre(); //  s1,a2,s3 // a1 +ts // a1+ tea
-                                               //  + ts // a1 + tea + teA
+    Caissier* caissier = this->_banque->premierCaissierLibre(); 
 
     Client* client = new Client(this->heure());
 
-    double heureNouvelleArrivee =
-        this->_banque->prochainDelaiArrivee() + this->_heure; // a1,s1,a2,s2
-
+    double heureNouvelleArrivee = this->_banque->prochainDelaiArrivee() + this->_heure; 
+    
     if (caissier == NULL) {
         this->_banque->fileAttente()->ajouter(client);
     } else {
@@ -37,7 +43,6 @@ void Arrivee::traiter() { // *c1, c2
     }
 
     if (heureNouvelleArrivee <= this->_banque->dureePrevue()) {
-        this->_banque->evenements().push_back(
-            new Arrivee(heureNouvelleArrivee, this->_banque));
+        this->_banque->evenements().push_back(new Arrivee(heureNouvelleArrivee, this->_banque));
     }
 }

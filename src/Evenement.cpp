@@ -9,17 +9,23 @@
  * 
  */
 
-//TODO commentaires doxygen
 #include "../include/Evenement.h"
 
 #include <iostream>
 using namespace std;
 
-
+/**
+* @brief méthode pour récupérer l'heure de l'événement
+* 
+*/
 double Evenement::heure(){
 
     return this->_heure;
 }
 
 
+/**
+* @brief Destructeur de la classe Evenement
+* 
+*/
 Evenement::~Evenement(){}

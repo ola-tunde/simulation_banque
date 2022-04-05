@@ -27,12 +27,10 @@ On souhaite obtenir, à la fin de la simulation, les résultats suivants :
 
 
 ## Compilation de la simulation
-`make` pour compiler tout le projet
-#### Options de compilation
-* `all` pour compiler tout
-* `clean` pour nettoyer les fichiers objets
-* `fclean` pour nettoyer les fichiers objets, l'exécutable et la documentation Doxygen
-* `docs` pour générer la documentation Doxygen
+* `make all` pour compiler tout le projet 
+* `make clean` pour nettoyer les fichiers objets
+* `make fclean` pour nettoyer les fichiers objets, l'exécutable et la documentation Doxygen
+* `make docs` pour générer la documentation Doxygen
 
 ## Exécution la simulation
 `./simulationBanque -dp[durée prévue de la simulation] -nc [nombre de caissiers] -ts [tempsCaissier1 ... tempsCaissierN] -ta [temps d'arrivée des clients]` 

@@ -108,8 +108,17 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizab
 <li>Les clients sont paresseux (si plusieurs caissiers sont libres lors de l’arrivée d’un client, ce dernier se fera servir par le caissier de plus faible numéro, celui situé le plus près de la porte d’entrée).</li>
 <li>Les caissiers ne sont jamais fatigués : dès la fin de traitement d’un client, le caissier en reprend un si la file n’est pas vide.</li>
 <li>On dispose d’un générateur aléatoire permettant de déterminer les arrivées de clients et les temps de service effectifs des caissiers.</li>
-<li>La simulation repose sur la succession d’évènements discrets: on suppose qu’entre deux évènenements consécutifs, il ne se passe rien de marquant dans le système, donc le temps varie de manière discrète. </li>
+<li>La simulation repose sur la succession d’évènements discrets: on suppose qu’entre deux évènenements consécutifs, il ne se passe rien de marquant dans le système, donc le temps varie de manière discrète.</li>
 </ul>
+<h1>Compilation de la simulation</h1>
+<ul>
+<li><code>make all</code> pour compiler tout le projet</li>
+<li><code>make clean</code> pour nettoyer les fichiers objets</li>
+<li><code>make fclean</code> pour nettoyer les fichiers objets, l'exécutable et la documentation Doxygen</li>
+<li><code>make docs</code> pour générer la documentation Doxygen</li>
+</ul>
+<h1>Exécution la simulation</h1>
+<p><code>./simulationBanque -dp[durée prévue de la simulation] -nc [nombre de caissiers] -ts [tempsCaissier1 ... tempsCaissierN] -ta [temps d'arrivée des clients]</code> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
